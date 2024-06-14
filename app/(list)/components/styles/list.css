@@ -1,6 +1,20 @@
 .list-background {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.list-container {
+  width: 50%;
+  height: 90vh;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+/* ------------------------------------- */
 .no-post {
   height: 100vh;
   display: flex;

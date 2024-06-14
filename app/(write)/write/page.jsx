@@ -30,21 +30,23 @@ export default function Write() {
           className="title-input"
           type="text"
           name="title"
-          placeholder="글제목"
+          placeholder="제목을 입력하시오"
           required
         />
-        <textarea name="content" placeholder="글내용" required />
-        <div className="tags-input">
-          {tags.map((tag, i) => (
-            <span key={i} className="tag" onClick={() => removeTag(tag)}>
-              <MdOutlineCancel /> {tag}
-            </span>
-          ))}
-        </div>
+        <textarea name="content" placeholder="내용을 입력하시오" required />
+        {tags.length > 0 ? (
+          <div className="tags-input">
+            {tags.map((tag, i) => (
+              <span key={i} className="tag" onClick={() => removeTag(tag)}>
+                <MdOutlineCancel /> {tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <input
           className="text-tag"
           type="text"
-          placeholder="태그입력"
+          placeholder="태그입력 (Enter)"
           onKeyDown={handleKeyDown}
         />
         <input type="hidden" name="tags" value={tags.join(",")} />

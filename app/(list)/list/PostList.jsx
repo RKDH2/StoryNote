@@ -3,7 +3,7 @@ import "../components/styles/list.css";
 
 export default function PostList({ result, session }) {
   return (
-    <div>
+    <div className="list-container">
       {result.length > 0 ? (
         result.map((post, i) => (
           <div className="post-list" key={i}>

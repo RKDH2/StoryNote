@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .post-write {
   margin: 0 auto;
   width: 30%;
@@ -10,12 +16,6 @@
   justify-content: center;
   align-items: center;
   color: white;
-}
-
-.jua-regular {
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .post-write p {
@@ -29,7 +29,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .post-form input::placeholder,
@@ -80,7 +80,7 @@
 
 .tag {
   display: flex;
-  margin: 0 5px;
+  margin: 5px 5px;
   padding: 5px;
   border-radius: 50px;
   border: 2px solid grey;
@@ -100,11 +100,12 @@
 
 .tags-input::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
-  border-radius: 4px; /* 스크롤바 둥글기 정도 */
+  border-radius: 4px;
 }
 
 .tags-input::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+  border-radius: 4px;
 }
 
 .text-tag {
