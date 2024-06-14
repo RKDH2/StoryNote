@@ -32,13 +32,22 @@
   gap: 20px;
 }
 
-.post-form input {
-  padding: 20px;
+.post-form input::placeholder,
+.post-form textarea::placeholder,
+.tags-input input::placeholder {
+  color: grey;
+  font-size: 14px;
+  font-family: "Jua";
+}
+
+.title-input {
+  padding: 10px 20px;
   border-radius: 10px;
   border: 2px solid grey;
   background-color: black;
   color: white;
   font-family: "Jua";
+  font-size: 20px;
 }
 
 .post-form textarea {
@@ -53,13 +62,6 @@
   font-family: "Jua";
 }
 
-.post-form input::placeholder,
-.post-form textarea::placeholder {
-  color: grey;
-  font-size: 14px;
-  font-family: "Jua";
-}
-
 .post-form button {
   padding: 10px;
   border-radius: 10px;
@@ -68,4 +70,49 @@
   font-size: 20px;
   background-color: black;
   color: white;
+}
+
+.tags-input {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.tag {
+  display: flex;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 50px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+  font-family: "Jua";
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 스크롤바 스타일 설정 */
+.tags-input::-webkit-scrollbar {
+  width: 8px; /*스크롤바 너비*/
+  height: 8px; /*스크롤바 높이*/
+}
+
+.tags-input::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
+  border-radius: 4px; /* 스크롤바 둥글기 정도 */
+}
+
+.tags-input::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+}
+
+.text-tag {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+  font-family: "Jua";
+  font-size: 12px;
 }
