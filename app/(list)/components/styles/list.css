@@ -1,0 +1,23 @@
+.list-background {
+}
+
+.no-post {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-post a {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  transition: all 0.3s;
+}
+
+.no-post a:hover {
+  transform: scale(1.2);
+  color: yellow;
+  text-decoration: underline yellow;
+}

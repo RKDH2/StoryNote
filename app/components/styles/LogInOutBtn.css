@@ -1,0 +1,18 @@
+.__Log-In-Out-Btn__ {
+  text-align: center;
+  width: 35%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all 0.3s;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.__Log-In-Out-Btn__:hover {
+  transform: scale(1.05);
+  background-color: orange;
+}
