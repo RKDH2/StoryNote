@@ -8,7 +8,9 @@ export default function PostList({ result, session }) {
         result.map((post, i) => (
           <div className="post-list" key={i}>
             <Link prefetch={false} href={`/detail/${post._id}`}>
-              <h4>{post.title}</h4>
+              <h4 className="post-title">{post.title}</h4>
+              <p className="post-content">{post.content}</p>
+              <p className="post-time">{post.post_time}</p>
             </Link>
           </div>
         ))

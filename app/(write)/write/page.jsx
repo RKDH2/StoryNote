@@ -33,7 +33,12 @@ export default function Write() {
           placeholder="제목을 입력하시오"
           required
         />
-        <textarea name="content" placeholder="내용을 입력하시오" required />
+        <textarea
+          className="content-input"
+          name="content"
+          placeholder="내용을 입력하시오"
+          required
+        />
         {tags.length > 0 ? (
           <div className="tags-input">
             {tags.map((tag, i) => (

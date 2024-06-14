@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .list-background {
   width: 100%;
   height: 100vh;
@@ -9,10 +17,68 @@
 .list-container {
   width: 50%;
   height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 20px;
   border-radius: 10px;
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+/* 스크롤바 스타일 설정 */
+.list-container::-webkit-scrollbar {
+  width: 8px; /*스크롤바 너비*/
+  height: 8px; /*스크롤바 높이*/
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
+  border-radius: 4px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+  border-radius: 4px;
+}
+
+.post-list {
+  width: 100%;
+  height: 15%;
+  background-color: rgba(50, 50, 50, 0.7);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 15px;
+  text-align: left;
+  font-family: "Jua";
+}
+
+.post-list a {
+  text-decoration: none;
+  color: white;
+}
+
+.post-title {
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.post-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+.post-time {
+  font-size: 12px;
+  color: grey;
+}
+
+.post-time:hover {
+  color: white;
 }
 /* ------------------------------------- */
 .no-post {

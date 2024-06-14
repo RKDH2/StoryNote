@@ -62,6 +62,23 @@
   font-family: "Jua";
 }
 
+/* 스크롤바 스타일 설정 */
+.content-input::-webkit-scrollbar {
+  width: 8px; /*스크롤바 너비*/
+  height: 8px; /*스크롤바 높이*/
+}
+
+.content-input::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* 스크롤바 색상 */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.content-input::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1); /* 스크롤바 트랙 색상 */
+  border-radius: 4px;
+}
+
 .post-form button {
   padding: 10px;
   border-radius: 10px;
