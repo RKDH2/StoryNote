@@ -7,7 +7,11 @@ export const dynamic = "force-dynamic";
 
 export default async function List() {
   const db = (await connectDB).db("forum");
-  let result = await db.collection("post").find().toArray();
+  let result = await db
+    .collection("post")
+    .find()
+    .sort({ post_time: -1 })
+    .toArray();
 
   result = result.map((a) => {
     a._id = a._id.toString();

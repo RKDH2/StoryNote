@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  padding: 10px;
+  /* background-color: rgb(255, 255, 255); */
+  color: rgba(255, 255, 255) !important;
+  font-family: "Jua";
+  background-color: transparent !important;
+  transition: background-color 0.3s ease;
+  z-index: 100;
+}
+
+.scrolled {
+  background-color: rgb(0, 0, 0) !important;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.5);
+}
+
+.Navbar a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 10px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  margin: 10px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.Navbar a:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .Navbar {
+    font-size: 14px;
+  }
+  .Navbar a {
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Navbar {
+    font-size: 12px;
+  }
+  .Navbar a {
+  }
+}

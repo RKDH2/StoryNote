@@ -1,0 +1,46 @@
+.detail-container {
+  padding: 20px;
+  width: 100vw;
+  height: 100%;
+  margin-top: 70px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.detail-tags {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.detail-tag {
+  margin: 0px 5px 0px 0px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  background-color: grey;
+  color: white;
+  font-family: "Jua";
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+
+.detail-tag:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.1);
+}
+
+.back-btn {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+}
