@@ -1,7 +1,7 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
-import PostList from "./PostList";
+import PostList from "../components/PostList";
 
 export const dynamic = "force-dynamic";
 

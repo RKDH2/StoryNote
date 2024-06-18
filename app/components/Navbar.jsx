@@ -42,7 +42,7 @@ export default function Navbar() {
         <FaFilePen />
         <p>글 작성하기</p>
       </Link>
-      <Link href="/">
+      <Link href="/mylist">
         <IoFileTrayFull />
         <p>내 글 보러가기</p>
       </Link>

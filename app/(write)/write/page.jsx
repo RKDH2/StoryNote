@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../components/style/write.css";
 import { MdOutlineCancel } from "react-icons/md";
 
-export default function Write() {
+export default function Write(props) {
   const [tags, setTags] = useState([]);
 
   const handleKeyDown = (e) => {

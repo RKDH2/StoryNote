@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.list-container {
+.my-list-container {
   width: 70%;
   height: 100vh;
   display: flex;
@@ -32,24 +32,24 @@
 }
 
 /* 스크롤바 스타일 설정 */
-.list-container::-webkit-scrollbar {
+.my-list-container::-webkit-scrollbar {
   width: 8px; /*스크롤바 너비*/
   height: 8px; /*스크롤바 높이*/
 }
 
-.list-container::-webkit-scrollbar-thumb {
+.my-list-container::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
   border-radius: 4px;
 }
 
-.list-container::-webkit-scrollbar-track {
+.my-list-container::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
   border-radius: 4px;
 }
 
-.post-list {
+.my-post-list {
   width: 100%;
-  height: 13%;
+  /* height: 18%; */
   background-color: rgba(50, 50, 50, 0.7);
   border-radius: 5px;
   padding: 10px;
@@ -58,18 +58,18 @@
   font-family: "Jua";
 }
 
-.post-list a {
+.my-post-list a {
   text-decoration: none;
   color: white;
 }
 
-.title-time {
+.my-title-time {
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
 }
 
-.post-title {
+.my-post-title {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -77,7 +77,7 @@
   font-size: 20px;
 }
 
-.post-content {
+.my-post-content {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -85,16 +85,16 @@
   font-size: 16px;
 }
 
-.post-time {
+.my-post-time {
   font-size: 12px;
   color: grey;
 }
 
-.post-time:hover {
+.my-post-time:hover {
   color: white;
 }
 
-.post-tags {
+.my-post-tags {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -103,7 +103,7 @@
   white-space: nowrap;
 }
 
-.post-tag {
+.my-post-tag {
   margin: 0px 5px 0px 0px;
   padding: 5px;
   border-radius: 50px;
@@ -116,20 +116,20 @@
   transition: all 0.3s;
 }
 
-.post-tag:hover {
+.my-post-tag:hover {
   background-color: black;
   color: white;
   transform: scale(1.1);
 }
 /* ------------------------------------- */
-.no-post {
+.my-no-post {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.no-post a {
+.my-no-post a {
   font-size: 30px;
   color: white;
   font-weight: bold;
@@ -137,50 +137,87 @@
   transition: all 0.3s;
 }
 
-.no-post a:hover {
+.my-no-post a:hover {
   transform: scale(1.2);
   color: yellow;
   text-decoration: underline yellow;
 }
+/* ------------------------------------- */
+.edit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+.edit-btn a {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.edit-btn button {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  border: none;
+  font-family: "Jua";
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.edit-btn a:hover,
+.edit-btn button:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
 
 /* ---------------------------------------------------- */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-  .list-container {
+  .my-list-container {
     width: 80%;
   }
-  .post-title {
+  .my-post-title {
     font-size: 18px;
     padding-bottom: 8px;
   }
 
-  .post-content {
+  .my-post-content {
     font-size: 14px;
     padding-bottom: 8px;
   }
 
-  .post-time {
+  .my-post-time {
     font-size: 8px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .list-container {
+  .my-list-container {
     width: 90%;
   }
-  .post-title {
+  .my-post-title {
     font-size: 16px;
     padding-bottom: 8px;
   }
 
-  .post-content {
+  .my-post-content {
     font-size: 12px;
     padding-bottom: 8px;
   }
 
-  .post-time {
+  .my-post-time {
     font-size: 8px;
   }
-  .post-list {
+  .my-post-list {
     height: 14%;
   }
 }

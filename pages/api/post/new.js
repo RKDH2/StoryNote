@@ -4,7 +4,7 @@ import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
   let session = await getServerSession(req, res, authOptions);
-  // console.log(session);
+  console.log(session);
   if (session) {
     const getCurrentTime = () => {
       return new Date();
@@ -17,6 +17,12 @@ export default async function handler(req, res) {
         body = JSON.parse(req.body);
       }
 
+      const email = session.user.email;
+      const testdb = (await connectDB).db("test");
+      const users = await testdb.collection("users").findOne({ email: email });
+      console.log("User:", users);
+
+      req.body.post_id = users._id;
       req.body.author = session.user.email; // 이메일 정보
       req.body.author_name = session.user.name; // 유저 이름
       req.body.post_time = getCurrentTime();
@@ -26,6 +32,7 @@ export default async function handler(req, res) {
       console.log("잘못된 JSON이 있습니다.");
     }
   }
+
   // console.log(req.body); // 저장된 내용
   if (req.method == "POST") {
     if (req.body.title == "") {
