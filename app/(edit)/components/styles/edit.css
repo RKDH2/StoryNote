@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.edit-post-write {
+  margin: 0 auto;
+  width: 70%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.edit-post-write p {
+  margin: 20px;
+  font-size: 32px;
+  font-family: "Jua";
+  /* -webkit-text-stroke: 1px black; */
+}
+
+.edit-post-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-post-form input::placeholder,
+.edit-post-form textarea::placeholder,
+.edit-tags-input input::placeholder {
+  color: grey;
+  font-size: 14px;
+  font-family: "Jua";
+}
+
+.edit-title-input {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+  font-family: "Jua";
+  font-size: 20px;
+}
+
+.edit-post-form textarea {
+  padding: 20px;
+  height: 200px;
+  resize: none;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-family: "Jua";
+}
+
+/* 스크롤바 스타일 설정 */
+.edit-content-input::-webkit-scrollbar {
+  width: 8px; /*스크롤바 너비*/
+  height: 8px; /*스크롤바 높이*/
+}
+
+.edit-content-input::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* 스크롤바 색상 */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-content-input::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1); /* 스크롤바 트랙 색상 */
+  border-radius: 4px;
+}
+
+.edit-post-form button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  font-family: "Jua";
+  font-size: 20px;
+  background-color: black;
+  color: white;
+}
+
+.edit-tags-input {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.edit-tag {
+  display: flex;
+  margin: 5px 5px;
+  padding: 5px;
+  border-radius: 50px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+  font-family: "Jua";
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 스크롤바 스타일 설정 */
+.edit-tags-input::-webkit-scrollbar {
+  width: 8px; /*스크롤바 너비*/
+  height: 8px; /*스크롤바 높이*/
+}
+
+.edit-tags-input::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
+  border-radius: 4px;
+}
+
+.edit-tags-input::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+  border-radius: 4px;
+}
+
+.edit-text-tag {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+  font-family: "Jua";
+  font-size: 13px;
+}
