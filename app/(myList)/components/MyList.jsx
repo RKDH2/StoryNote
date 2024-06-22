@@ -35,6 +35,7 @@ export default function MyList({ result, session }) {
                     headers: { "Content-type": "application/json" },
                     body: JSON.stringify({ id: post._id }),
                   }).then(() => {
+                    window.location.reload();
                     console.log("DELETE OK");
                   });
                 }}

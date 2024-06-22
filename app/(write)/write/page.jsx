@@ -6,6 +6,7 @@ import { MdOutlineCancel } from "react-icons/md";
 
 export default function Write(props) {
   const [tags, setTags] = useState([]);
+  const [src, setSrc] = useState("");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -39,6 +40,34 @@ export default function Write(props) {
           placeholder="내용을 입력하시오"
           required
         />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={async (e) => {
+            let file = e.target.files[0];
+            let filename = encodeURIComponent(file.name);
+            let res = await fetch("/api/post/image?file=" + filename);
+            let data = await res.json();
+
+            //S3 업로드
+            const formData = new FormData();
+            Object.entries({ ...data.fields, file }).forEach(([key, value]) => {
+              formData.append(key, value);
+            });
+            let uploadResult = await fetch(data.url, {
+              method: "POST",
+              body: formData,
+            });
+            console.log(uploadResult);
+
+            if (uploadResult.ok) {
+              setSrc(uploadResult.url + "/" + filename);
+            } else {
+              console.log("실패");
+            }
+          }}
+        />
+        {src && <img src={src} />}
         {tags.length > 0 ? (
           <div className="tags-input">
             {tags.map((tag, i) => (
