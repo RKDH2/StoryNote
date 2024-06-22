@@ -14,7 +14,6 @@ export default function Edit(props) {
       try {
         const response = await fetch(`/api/post/findDB?id=${props.params.id}`);
         const data = await response.json();
-        console.log(data);
         setPost(data);
 
         if (data.tags) {

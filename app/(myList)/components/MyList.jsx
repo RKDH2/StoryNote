@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import "../components/styles/mylist.css";
 
@@ -25,7 +27,20 @@ export default function MyList({ result, session }) {
             </Link>
             <div className="edit-btn">
               <Link href={session ? `/edit/${post._id}` : null}>수정하기</Link>
-              <button>삭제하기</button>
+              <button
+                type="Submit"
+                onClick={(e) => {
+                  fetch("/api/post/delete", {
+                    method: "DELETE",
+                    headers: { "Content-type": "application/json" },
+                    body: JSON.stringify({ id: post._id }),
+                  }).then(() => {
+                    console.log("DELETE OK");
+                  });
+                }}
+              >
+                삭제하기
+              </button>
             </div>
           </div>
         ))

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
       let result = await db
         .collection("post")
         .findOne({ _id: new ObjectId(req.query.id) });
-
+      console.log("검사:", result);
       if (result) {
         console.log(result);
 
