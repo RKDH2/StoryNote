@@ -19,6 +19,7 @@ export default async function handler(req, res) {
         title: req.body.title,
         content: req.body.content,
         tags: req.body.tags,
+        imgSrc: req.body.imgSrc,
         post_time: req.body.post_time,
       };
       if (req.body.title == "" || req.body.content == "") {

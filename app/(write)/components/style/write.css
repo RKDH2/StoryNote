@@ -7,9 +7,9 @@
 }
 
 .post-write {
-  margin: 0 auto;
+  margin: 100px auto;
   width: 70%;
-  height: 100vh;
+  /* height: 100vh; */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -80,16 +80,6 @@
   border-radius: 4px;
 }
 
-.post-form button {
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid grey;
-  font-family: "Jua";
-  font-size: 20px;
-  background-color: black;
-  color: white;
-}
-
 .tags-input {
   display: flex;
   overflow-x: auto;
@@ -134,4 +124,43 @@
   color: white;
   font-family: "Jua";
   font-size: 13px;
+}
+
+.container-image {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+}
+
+.image-preview {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60%;
+  min-height: 60%;
+}
+
+.img-delete-btn {
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  font-family: "Jua";
+  font-size: 16px;
+  background-color: black;
+  color: rgb(255, 0, 0);
+}
+
+.submit-btn {
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  font-family: "Jua";
+  font-size: 20px;
+  background-color: black;
+  color: white;
 }

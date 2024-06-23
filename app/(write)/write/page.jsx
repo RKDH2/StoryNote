@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../components/style/write.css";
 import { MdOutlineCancel } from "react-icons/md";
 
 export default function Write(props) {
   const [tags, setTags] = useState([]);
-  const [src, setSrc] = useState("");
+  const [src, setSrc] = useState(""); // 이미지 업로드 보기
+  const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
+  const [file, setFile] = useState(null); // 파일 상태
+  const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -23,10 +26,80 @@ export default function Write(props) {
     setTags(tags.filter((tag) => tag !== tagRemove));
   };
 
+  const handleFileChange = (e) => {
+    let selectedFile = e.target.files[0];
+
+    // 파일 미리보기 URL 생성
+    const previewUrl = URL.createObjectURL(selectedFile);
+    setPreviewSrc(previewUrl);
+    setFile(selectedFile); // 파일 상태 설정
+  };
+
+  const handleSubmit = async (e) => {
+    let filename = encodeURIComponent(file.name);
+    try {
+      let res = await fetch("/api/post/image?file=" + filename);
+      let data = await res.json();
+      console.log("Data:", data);
+
+      //S3 업로드
+      const formData = new FormData();
+      Object.entries({ ...data.fields, file }).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      let uploadResult = await fetch(data.url, {
+        method: "POST",
+        body: formData,
+      });
+
+      console.log(uploadResult);
+
+      if (uploadResult.ok) {
+        const imageUrl = data.url + "/" + data.fields.key;
+        setSrc(
+          `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`
+        ); // 업로드된 파일의 URL 설정
+
+        const form = e.target;
+        const formDataToSend = new FormData(form);
+        formDataToSend.append("imgSrc", imageUrl);
+
+        let postImage = await fetch(form.action, {
+          method: "POST",
+          body: formDataToSend,
+        });
+
+        if (postImage.ok) {
+          // 성공적으로 포스트를 작성한 후 원하는 동작 수행
+          console.log("포스트 작성 성공");
+        } else {
+          console.log("포스트 작성 실패");
+        }
+      } else {
+        console.log("업로드 실패");
+      }
+    } catch (error) {
+      console.error("파일 업로드 중 오류 발생:", error);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setPreviewSrc("");
+    setFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   return (
     <div className="post-write">
       <p>글을 작성해 보세요!</p>
-      <form className="post-form" action="/api/post/new" method="POST">
+      <form
+        className="post-form"
+        action="/api/post/new"
+        method="POST"
+        onSubmit={handleSubmit}
+      >
         <input
           className="title-input"
           type="text"
@@ -40,34 +113,27 @@ export default function Write(props) {
           placeholder="내용을 입력하시오"
           required
         />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={async (e) => {
-            let file = e.target.files[0];
-            let filename = encodeURIComponent(file.name);
-            let res = await fetch("/api/post/image?file=" + filename);
-            let data = await res.json();
-
-            //S3 업로드
-            const formData = new FormData();
-            Object.entries({ ...data.fields, file }).forEach(([key, value]) => {
-              formData.append(key, value);
-            });
-            let uploadResult = await fetch(data.url, {
-              method: "POST",
-              body: formData,
-            });
-            console.log(uploadResult);
-
-            if (uploadResult.ok) {
-              setSrc(uploadResult.url + "/" + filename);
-            } else {
-              console.log("실패");
-            }
-          }}
-        />
-        {src && <img src={src} />}
+        <div className="container-image">
+          <input
+            type="file"
+            accept="image/*"
+            name="imgSrc"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+          />
+          {previewSrc && (
+            <>
+              <img src={previewSrc} className="image-preview" />
+              <button
+                className="img-delete-btn"
+                type="button"
+                onClick={handleRemoveImage}
+              >
+                이미지 삭제
+              </button>
+            </>
+          )}
+        </div>
         {tags.length > 0 ? (
           <div className="tags-input">
             {tags.map((tag, i) => (
@@ -84,7 +150,9 @@ export default function Write(props) {
           onKeyDown={handleKeyDown}
         />
         <input type="hidden" name="tags" value={tags.join(",")} />
-        <button type="submit">생성</button>
+        <button type="submit" className="submit-btn">
+          생성
+        </button>
       </form>
     </div>
   );
