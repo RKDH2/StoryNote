@@ -2,7 +2,6 @@
   padding: 20px;
   width: 100vw;
   height: 100%;
-  margin-top: 60px;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
@@ -32,7 +31,6 @@
 .detail-tag:hover {
   background-color: black;
   color: white;
-  transform: scale(1.1);
 }
 
 .back-btn {

@@ -1,30 +1,59 @@
+"use client";
+
 import Link from "next/link";
 import "../components/styles/list.css";
+import { useEffect, useState } from "react";
 
 export default function PostList({ result, session }) {
-  // console.log(result);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const response = await fetch("/api/post/postFind", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setPosts(data);
+      console.log("Data", data);
+    }
+
+    fetchPosts();
+  }, []);
+
   return (
     <div className="list-container">
-      {result.length > 0 ? (
-        result.map((post, i) => (
-          <div className="post-list" key={i}>
-            <Link prefetch={false} href={`/detail/${post._id}`}>
-              <div className="title-time">
-                <h4 className="post-title">{post.title}</h4>
-                <p className="post-time">{post.post_time}</p>
-              </div>
-              <p className="post-content">{post.content}</p>
-              {post.tags && post.tags.length > 0 ? (
-                <p className="post-tags">
-                  {post.tags.split(",").map((tag, i) => (
-                    <span key={i} className="post-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </p>
-              ) : null}
-            </Link>
-          </div>
+      {posts.length > 0 ? (
+        posts.map((post, i) => (
+          <li className="post-list" key={i}>
+            <div className="title-post-name_time">
+              <a href={`/detail/${post._id}`} className="post-name">
+                <img
+                  src={post.profile_img ? post.profile_img : "/scriptparty.svg"}
+                  className="profile_img"
+                />
+                {post.author_name}
+              </a>
+              <a className="post-time">{post.post_time}</a>
+            </div>
+            <div className="post-title-box">
+              <a href={`/detail/${post._id}`} className="post-title">
+                {post.title}
+              </a>
+            </div>
+            {/* <p className="post-content">{post.content}</p> */}
+            {post.tags && post.tags.length > 0 ? (
+              <p className="post-tags">
+                {post.tags.split(",").map((tag, i) => (
+                  <span key={i} className="post-tag">
+                    #{tag}
+                  </span>
+                ))}
+              </p>
+            ) : null}
+          </li>
         ))
       ) : (
         <div className="no-post">

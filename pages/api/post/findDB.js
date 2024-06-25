@@ -11,7 +11,6 @@ export default async function handler(req, res) {
       console.log("검사:", result);
       if (result) {
         console.log(result);
-
         res.status(200).json(result);
       } else {
         res.status(404).json({ message: "Post not found" });

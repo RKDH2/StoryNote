@@ -1,31 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap");
 
-.jua-regular {
-  font-family: "Jua", sans-serif;
+.nanum-gothic-coding-regular {
+  font-family: "Nanum Gothic Coding", monospace;
   font-weight: 400;
   font-style: normal;
 }
 
 .list-background {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .list-container {
-  width: 70%;
+  width: 60%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   margin: 20px;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgb(234, 234, 234); */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -46,51 +44,89 @@
   border-radius: 4px;
 }
 
-.post-list {
-  width: 100%;
-  height: 13%;
-  background-color: rgba(50, 50, 50, 0.7);
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-  text-align: left;
-  font-family: "Jua";
+li {
+  list-style-type: none;
 }
 
-.post-list a {
+a {
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
-.title-time {
+.post-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  box-sizing: border-box;
+  padding: 0 0 10px 0;
+  margin: 5px 0;
+  text-align: left;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.post-list:last-child {
+  border-bottom: none;
+}
+
+.post-list div {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.title-post-name_time {
   display: flex;
   justify-content: space-between;
   /* align-items: center; */
+}
+
+.post-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: gray;
+}
+
+.profile_img {
+  width: 20px;
+  border-radius: 50px;
+}
+
+.post-title-box {
+  padding-bottom: 10px;
 }
 
 .post-title {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  padding-bottom: 10px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
-.post-content {
+.post-name:hover,
+.post-title:hover {
+  color: rgb(0, 115, 255);
+}
+
+/* .post-content {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   padding-bottom: 10px;
   font-size: 16px;
-}
+} */
 
 .post-time {
   font-size: 12px;
   color: grey;
-}
-
-.post-time:hover {
-  color: white;
 }
 
 .post-tags {
@@ -103,22 +139,19 @@
 }
 
 .post-tag {
-  margin: 0px 5px 0px 0px;
-  padding: 5px;
-  border-radius: 50px;
-  background-color: grey;
-  color: white;
-  font-family: "Jua";
-  font-size: 8px;
+  margin: 10px 5px 0px 0px;
+  color: grey;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 12px;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s;
 }
 
 .post-tag:hover {
-  background-color: black;
-  color: white;
-  transform: scale(1.1);
+  color: rgb(0, 115, 255);
 }
 /* ------------------------------------- */
 .no-post {

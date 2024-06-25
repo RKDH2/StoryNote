@@ -22,6 +22,7 @@ export default async function handler(req, res) {
       const users = await testdb.collection("users").findOne({ email: email });
       console.log("User:", users);
 
+      req.body.profile_img = users.image;
       req.body.post_id = users._id;
       req.body.author = session.user.email; // 이메일 정보
       req.body.author_name = session.user.name; // 유저 이름

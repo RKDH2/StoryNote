@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap");
 
-.jua-regular {
-  font-family: "Jua", sans-serif;
+.nanum-gothic-coding-regular {
+  font-family: "Nanum Gothic Coding", monospace;
   font-weight: 400;
   font-style: normal;
 }
 
 .list-background {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
 }
 
 .my-list-container {
-  width: 70%;
+  width: 60%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,6 @@
   text-align: center;
   padding: 20px;
   margin: 20px;
-  border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.5);
   overflow-y: auto;
   overflow-x: hidden;
@@ -49,11 +48,12 @@
 .my-post-list {
   width: 100%;
   background-color: rgba(50, 50, 50, 0.7);
-  border-radius: 5px;
   padding: 10px;
   margin: 10px;
   text-align: left;
-  font-family: "Jua";
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
 }
 
 .my-post-list a {
@@ -107,7 +107,9 @@
   border-radius: 50px;
   background-color: grey;
   color: white;
-  font-family: "Jua";
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
   font-size: 8px;
   cursor: pointer;
   white-space: nowrap;
@@ -117,7 +119,6 @@
 .my-post-tag:hover {
   background-color: black;
   color: white;
-  transform: scale(1.1);
 }
 /* ------------------------------------- */
 .my-no-post {
@@ -167,7 +168,9 @@
   padding: 3px;
   border-radius: 5px;
   border: none;
-  font-family: "Jua";
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
   font-size: 16px;
   transition: all 0.3s;
 }
