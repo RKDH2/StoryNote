@@ -7,7 +7,7 @@
 }
 
 .edit-post-write {
-  margin: 100px auto;
+  margin: 0 auto;
   width: 70%;
   /* height: 100vh; */
   text-align: center;
@@ -173,4 +173,22 @@
   font-size: 20px;
   background-color: black;
   color: white;
+}
+/* ---------------------------------------- */
+.btn-upload {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid grey;
+  font-family: "Jua";
+  font-size: 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#file {
+  display: none;
 }

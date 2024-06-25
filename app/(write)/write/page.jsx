@@ -114,7 +114,11 @@ export default function Write(props) {
           required
         />
         <div className="container-image">
+          <label htmlFor="file">
+            <div className="btn-upload">이미지 업로드하기</div>
+          </label>
           <input
+            id="file"
             type="file"
             accept="image/*"
             name="imgSrc"

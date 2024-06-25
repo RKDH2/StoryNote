@@ -24,12 +24,16 @@ export default async function Detail(props) {
       <p>{result.author_name}</p>
       <p>{result.title}</p>
       <p>{result.content}</p>
-      {result.imgSrc && (
-        <img
-          src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
-          className="detail-img"
-        />
-      )}
+      {result.imgSrc ? (
+        result.imgSrc.startsWith("https://") ? (
+          <img src={result.imgSrc} className="detail-img" />
+        ) : (
+          <img
+            src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
+            className="detail-img"
+          />
+        )
+      ) : null}
       {result.tags && result.tags.length > 0 ? (
         <p className="detail-tags">
           {result.tags.split(",").map((tag, i) => (

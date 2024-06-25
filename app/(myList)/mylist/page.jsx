@@ -14,7 +14,6 @@ export default async function MyPostList() {
 
   const testdb = (await connectDB).db("test");
   const users = await testdb.collection("users").findOne({ email: email });
-
   const userId = users._id.toString();
 
   // console.log(session);

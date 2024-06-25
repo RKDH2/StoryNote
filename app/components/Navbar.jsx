@@ -1,51 +1,63 @@
-"use client";
-
 import Link from "next/link";
 import "./styles/Navbar.css";
-import { FaHome } from "react-icons/fa";
-import { FaClipboardList } from "react-icons/fa";
-import { FaFilePen } from "react-icons/fa6";
-import { IoFileTrayFull } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import LoginBtn from "../components/LoginBtn";
+import LogOutBtn from "../components/LogOutBtn";
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // console.log(window.scrollY);
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+export default async function Navbar() {
+  let session = await getServerSession(authOptions);
 
   return (
-    <div className={`Navbar ${scrolled ? "scrolled" : ""}`}>
-      <Link href="/">
-        <FaHome />
-        <p>홈</p>
-      </Link>
-      <Link href="/list">
-        <FaClipboardList />
-        <p>블로그</p>
-      </Link>
-      <Link href="/write">
-        <FaFilePen />
-        <p>글 작성하기</p>
-      </Link>
-      <Link href="/mylist">
-        <IoFileTrayFull />
-        <p>내 글 보러가기</p>
-      </Link>
+    <div className="Navbar">
+      <header className="navbar-container">
+        <Link href="/" className="logo-img">
+          <img src="/ScriptPartyLogo.svg" />
+        </Link>
+        <div className="menu-items">
+          <Link href="/list">
+            <p>커뮤니티</p>
+          </Link>
+          <Link href="/">
+            <p>이벤트</p>
+          </Link>
+          <Link href="/">
+            <p>공지</p>
+          </Link>
+          <div className="menu-line"></div>
+          {session ? (
+            <>
+              <Link href="/write">
+                <p>작성하기</p>
+              </Link>
+              <Link href="/mylist">
+                <p>활동내역</p>
+              </Link>
+            </>
+          ) : null}
+        </div>
+        <div className="login-section">
+          {session ? (
+            <>
+              <img
+                className="profile"
+                src={`${session.user.image}`}
+                alt="프로필"
+              />
+              <LogOutBtn />
+            </>
+          ) : (
+            <>
+              <img
+                className="profile"
+                src="/noprofile.svg"
+                alt="프로필적용안됨"
+              />
+              <LoginBtn />
+            </>
+          )}
+        </div>
+      </header>
     </div>
   );
 }

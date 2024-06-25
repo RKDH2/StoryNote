@@ -18,18 +18,21 @@ export default function Edit(props) {
         const response = await fetch(`/api/post/findDB?id=${props.params.id}`);
         const data = await response.json();
         setPost(data);
-        console.log("Data", data);
+        // console.log("Data", data);
 
         if (data.tags) {
           setTags(data.tags.split(","));
         }
 
         if (data.imgSrc) {
-          let IMGSRC = `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`;
+          // console.log("url:", data.imgSrc);
+          const IMGSRC = data.imgSrc.startsWith("https://")
+            ? data.imgSrc
+            : `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`;
           setPreviewSrc(IMGSRC);
           // 파일 입력 필드에 파일을 설정합니다.
-          // const fakeFile = new File([""], data.imgSrc, { type: "image/*" });
-          // setFile(fakeFile);
+          const fakeFile = new File([""], data.imgSrc, { type: "image/*" });
+          setFile(fakeFile);
         }
       } catch (error) {
         console.log("Error", error);
@@ -38,11 +41,11 @@ export default function Edit(props) {
     fetchPost();
   }, [props.params.id]);
 
-  useEffect(() => {
-    if (previewSrc) {
-      console.log("Preview Src Updated:", previewSrc);
-    }
-  }, [previewSrc]);
+  // useEffect(() => {
+  //   if (previewSrc) {
+  //     console.log("Preview Src Updated:", previewSrc);
+  //   }
+  // }, [previewSrc]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -81,7 +84,7 @@ export default function Edit(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let imgUrl = previewSrc;
+    let imgUrl = previewSrc; // 초기값으로 previewSrc를 설정합니다.
     if (file && file.name !== post.imgSrc) {
       let filename = encodeURIComponent(file.name);
       try {
@@ -89,7 +92,7 @@ export default function Edit(props) {
         let data = await res.json();
         console.log(data);
 
-        //S3 업로드
+        // S3 업로드
         const formData = new FormData();
         Object.entries({ ...data.fields, file }).forEach(([key, value]) => {
           formData.append(key, value);
@@ -163,7 +166,11 @@ export default function Edit(props) {
           required
         />
         <div className="edit-container-image">
+          <label htmlFor="file">
+            <div className="btn-upload">이미지 업로드하기</div>
+          </label>
           <input
+            id="file"
             type="file"
             accept="image/*"
             name="imgSrc"
@@ -172,7 +179,11 @@ export default function Edit(props) {
           />
           {previewSrc && (
             <>
-              <img src={previewSrc} className="edit-image-preview" />
+              <img
+                src={previewSrc}
+                className="edit-image-preview"
+                alt="Preview"
+              />
               <button
                 className="edit-img-delete-btn"
                 type="button"
@@ -183,7 +194,7 @@ export default function Edit(props) {
             </>
           )}
         </div>
-        {tags.length > 0 ? (
+        {tags.length > 0 && (
           <div className="edit-tags-input">
             {tags.map((tag, i) => (
               <span key={i} className="edit-tag" onClick={() => removeTag(tag)}>
@@ -191,7 +202,7 @@ export default function Edit(props) {
               </span>
             ))}
           </div>
-        ) : null}
+        )}
         <input
           className="edit-text-tag"
           type="text"

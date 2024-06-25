@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap");
 
 .jua-regular {
   font-family: "Jua", sans-serif;
@@ -6,44 +7,77 @@
   font-style: normal;
 }
 
+.nanum-gothic-coding-regular {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .Navbar {
   display: flex;
-  justify-content: space-around;
-  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
   top: 0;
   width: 100vw;
-  padding: 15px 20px;
-  /* background-color: rgb(255, 255, 255); */
-  color: rgba(255, 255, 255) !important;
-  font-family: "Jua";
-  background-color: transparent !important;
-  transition: background-color 0.3s ease;
+  height: 8vh;
+  padding: 10px 40px;
+  background-color: white;
+  font-size: 13px;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
   z-index: 100;
 }
 
-.scrolled {
-  background-color: rgb(0, 0, 0) !important;
-  border-bottom: 2px solid rgba(128, 128, 128, 0.5);
-}
-
-.Navbar a {
+.navbar-container {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
-  gap: 10px;
-  background-color: rgba(255, 255, 255, 0);
-  padding: 10px;
-  border-radius: 5px;
-  color: rgb(255, 255, 255);
-  /* margin: 10px; */
-  text-decoration: none;
-  transition: all 0.3s;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.Navbar a:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+.menu-line {
+  width: 1px;
+  background-color: grey;
+}
+
+.logo-img {
+  margin-right: 50px;
+}
+
+.logo-img img {
+  height: 4vh;
+}
+
+.menu-items {
+  display: flex;
+}
+
+.menu-items a {
+  padding: 0 20px;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.menu-items a:hover {
+  color: rgb(0, 115, 255);
+}
+
+.login-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile {
+  border: 1.5px solid rgb(101, 101, 101);
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  /* width: 6.1%; */
+  /* 36.77 */
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
