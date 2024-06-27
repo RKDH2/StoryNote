@@ -38,7 +38,7 @@ export default function Write(props) {
   const handleSubmit = async (e) => {
     let filename = encodeURIComponent(file.name);
     try {
-      let res = await fetch("/api/post/image?file=" + filename);
+      let res = await fetch("/api/forum/image?file=" + filename);
       let data = await res.json();
       console.log("Data:", data);
 
@@ -96,7 +96,7 @@ export default function Write(props) {
       <p>글을 작성해 보세요!</p>
       <form
         className="post-form"
-        action="/api/post/new"
+        action="/api/forum/new"
         method="POST"
         onSubmit={handleSubmit}
       >

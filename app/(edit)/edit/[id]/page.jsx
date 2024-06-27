@@ -15,7 +15,7 @@ export default function Edit(props) {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await fetch(`/api/post/findDB?id=${props.params.id}`);
+        const response = await fetch(`/api/forum/findDB?id=${props.params.id}`);
         const data = await response.json();
         setPost(data);
         // console.log("Data", data);
@@ -88,7 +88,7 @@ export default function Edit(props) {
     if (file && file.name !== post.imgSrc) {
       let filename = encodeURIComponent(file.name);
       try {
-        let res = await fetch("/api/post/image?file=" + filename);
+        let res = await fetch("/api/forum/image?file=" + filename);
         let data = await res.json();
         console.log(data);
 
@@ -116,7 +116,7 @@ export default function Edit(props) {
     }
 
     try {
-      const response = await fetch("/api/post/edit", {
+      const response = await fetch("/api/forum/edit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

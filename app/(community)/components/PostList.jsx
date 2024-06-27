@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import "../components/styles/list.css";
+import "./styles/community.css";
 import { useEffect, useState } from "react";
+
+export const dynamic = "force-dynamic";
 
 export default function PostList({ result, session }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function fetchPosts() {
-      const response = await fetch("/api/post/postFind", {
+      const response = await fetch("/api/forum/postFind", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -25,6 +27,10 @@ export default function PostList({ result, session }) {
 
   return (
     <div className="list-container">
+      <div className="community-logo">
+        <p>커뮤니티</p>
+        <p>사람들과 소통하면서 지식을 넓히고 이야기를 적으세요.</p>
+      </div>
       {posts.length > 0 ? (
         posts.map((post, i) => (
           <li className="post-list" key={i}>
@@ -42,8 +48,10 @@ export default function PostList({ result, session }) {
               <a href={`/detail/${post._id}`} className="post-title">
                 {post.title}
               </a>
+              {/* <a href={`/detail/${post._id}`} className="post-content">
+                {post.content}
+              </a> */}
             </div>
-            {/* <p className="post-content">{post.content}</p> */}
             {post.tags && post.tags.length > 0 ? (
               <p className="post-tags">
                 {post.tags.split(",").map((tag, i) => (

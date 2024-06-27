@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
       const db = (await connectDB).db("forum");
       let find = await db
-        .collection("post")
+        .collection("community_post")
         .findOne({ _id: new ObjectId(postId) });
       console.log(find.post_id); // 글의 포스트 id값 호출
 
@@ -36,7 +36,9 @@ export default async function handler(req, res) {
       }
 
       if (find.post_id == users._id) {
-        await db.collection("post").deleteOne({ _id: new ObjectId(req.body) });
+        await db
+          .collection("community_post")
+          .deleteOne({ _id: new ObjectId(req.body) });
         res.status(200).json("삭제완료");
       } else {
         res.status(403).json("글을 작성한 유저가 아닙니다!(불일치)");

@@ -20,7 +20,7 @@ export default async function MyPostList() {
   // console.log(userId);
 
   let result = await db
-    .collection("post")
+    .collection("community_post")
     .find({ post_id: userId })
     .sort({ post_time: -1 })
     .toArray();

@@ -1,4 +1,3 @@
-import List from "./(list)/list/page";
 import styles from "./page.module.css";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
@@ -9,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 const db = (await connectDB).db("forum");
 let result = await db
-  .collection("post")
+  .collection("community_post")
   .find()
   .sort({ post_time: -1 })
   .toArray();

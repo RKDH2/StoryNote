@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     try {
       const db = (await connectDB).db("forum");
       const posts = await db
-        .collection("post")
+        .collection("community_post")
         .find()
         .sort({ post_time: -1 })
         .toArray();

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     try {
       const db = (await connectDB).db("forum");
       let result = await db
-        .collection("post")
+        .collection("community_post")
         .findOne({ _id: new ObjectId(req.query.id) });
       console.log("검사:", result);
       if (result) {

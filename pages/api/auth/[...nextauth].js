@@ -14,10 +14,12 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_OAUTH_ID || "",
       clientSecret: process.env.GOOGLE_OAUTH_SECRET || "",
+      // allowDangerousEmailAccountLinking: true,
     }),
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID || "",
       clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
+      allowDangerousEmailAccountLinking: true,
     }),
     // NaverProvider({
     //   clientId: process.env.NAVER_CLIENT_ID || "",

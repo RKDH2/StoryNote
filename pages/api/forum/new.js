@@ -43,8 +43,8 @@ export default async function handler(req, res) {
     }
     try {
       const db = (await connectDB).db("forum");
-      await db.collection("post").insertOne(JSON.parse(req.body));
-      res.status(200).redirect("/list");
+      await db.collection("community_post").insertOne(JSON.parse(req.body));
+      res.status(200).redirect("/community");
     } catch {
       res.status(500).json({ error: "DB오류" });
     }

@@ -7,7 +7,7 @@ import BackBtn from "../../components/BackBtn";
 
 export default async function Detail(props) {
   const db = (await connectDB).db("forum");
-  let result = await db.collection("post").findOne({
+  let result = await db.collection("community_post").findOne({
     _id: new ObjectId(props.params.id),
   });
 

@@ -15,16 +15,9 @@ export default async function Navbar() {
           <img src="/ScriptPartyLogo.svg" />
         </Link>
         <div className="menu-items">
-          <Link href="/list">
+          <Link href="/community">
             <p>커뮤니티</p>
           </Link>
-          <Link href="/">
-            <p>이벤트</p>
-          </Link>
-          <Link href="/">
-            <p>공지</p>
-          </Link>
-          <div className="menu-line"></div>
           {session ? (
             <>
               <Link href="/write">
@@ -35,6 +28,14 @@ export default async function Navbar() {
               </Link>
             </>
           ) : null}
+          <div className="menu-line"></div>
+
+          <Link href="/">
+            <p>이벤트</p>
+          </Link>
+          <Link href="/">
+            <p>공지</p>
+          </Link>
         </div>
         <div className="login-section">
           {session ? (
@@ -48,11 +49,11 @@ export default async function Navbar() {
             </>
           ) : (
             <>
-              <img
+              {/* <img
                 className="profile"
                 src="/noprofile.svg"
                 alt="프로필적용안됨"
-              />
+              /> */}
               <LoginBtn />
             </>
           )}

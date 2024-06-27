@@ -28,13 +28,13 @@ export default async function handler(req, res) {
       const db = (await connectDB).db("forum");
 
       let find = await db
-        .collection("post")
+        .collection("community_post")
         .findOne({ _id: new ObjectId(req.body.id) });
 
       try {
         if (find.post_id == users._id) {
           await db
-            .collection("post")
+            .collection("community_post")
             .updateOne({ _id: new ObjectId(req.body.id) }, { $set: change });
           console.log("완료", req.body);
           res.status(200).redirect("/mylist");

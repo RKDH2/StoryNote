@@ -5,10 +5,10 @@ import PostList from "../components/PostList";
 
 export const dynamic = "force-dynamic";
 
-export default async function List() {
+export default async function Community() {
   const db = (await connectDB).db("forum");
   let result = await db
-    .collection("post")
+    .collection("community_post")
     .find()
     .sort({ post_time: -1 })
     .toArray();

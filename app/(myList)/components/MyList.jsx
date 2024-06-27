@@ -30,7 +30,7 @@ export default function MyList({ result, session }) {
               <button
                 type="Submit"
                 onClick={(e) => {
-                  fetch("/api/post/delete", {
+                  fetch("/api/forum/delete", {
                     method: "DELETE",
                     headers: { "Content-type": "application/json" },
                     body: JSON.stringify({ id: post._id }),
