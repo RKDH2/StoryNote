@@ -92,72 +92,74 @@ export default function Write(props) {
   };
 
   return (
-    <div className="post-write">
-      <p>글을 작성해 보세요!</p>
-      <form
-        className="post-form"
-        action="/api/forum/new"
-        method="POST"
-        onSubmit={handleSubmit}
-      >
-        <input
-          className="title-input"
-          type="text"
-          name="title"
-          placeholder="제목을 입력하시오"
-          required
-        />
-        <textarea
-          className="content-input"
-          name="content"
-          placeholder="내용을 입력하시오"
-          required
-        />
-        <div className="container-image">
-          <label htmlFor="file">
-            <div className="btn-upload">이미지 업로드하기</div>
-          </label>
+    <div className="community-container">
+      <div className="post-write">
+        <p>글을 작성해 보세요!</p>
+        <form
+          className="post-form"
+          action="/api/forum/new"
+          method="POST"
+          onSubmit={handleSubmit}
+        >
           <input
-            id="file"
-            type="file"
-            accept="image/*"
-            name="imgSrc"
-            onChange={handleFileChange}
-            ref={fileInputRef}
+            className="title-input"
+            type="text"
+            name="title"
+            placeholder="제목을 입력하시오"
+            required
           />
-          {previewSrc && (
-            <>
-              <img src={previewSrc} className="image-preview" />
-              <button
-                className="img-delete-btn"
-                type="button"
-                onClick={handleRemoveImage}
-              >
-                이미지 삭제
-              </button>
-            </>
-          )}
-        </div>
-        {tags.length > 0 ? (
-          <div className="tags-input">
-            {tags.map((tag, i) => (
-              <span key={i} className="tag" onClick={() => removeTag(tag)}>
-                <MdOutlineCancel /> {tag}
-              </span>
-            ))}
+          <textarea
+            className="content-input"
+            name="content"
+            placeholder="내용을 입력하시오"
+            required
+          />
+          <div className="container-image">
+            <label htmlFor="file">
+              <div className="btn-upload">이미지 업로드하기</div>
+            </label>
+            <input
+              id="file"
+              type="file"
+              accept="image/*"
+              name="imgSrc"
+              onChange={handleFileChange}
+              ref={fileInputRef}
+            />
+            {previewSrc && (
+              <>
+                <img src={previewSrc} className="image-preview" />
+                <button
+                  className="img-delete-btn"
+                  type="button"
+                  onClick={handleRemoveImage}
+                >
+                  이미지 삭제
+                </button>
+              </>
+            )}
           </div>
-        ) : null}
-        <input
-          className="text-tag"
-          type="text"
-          placeholder="태그입력 (Enter)"
-          onKeyDown={handleKeyDown}
-        />
-        <input type="hidden" name="tags" value={tags.join(",")} />
-        <button type="submit" className="submit-btn">
-          생성
-        </button>
-      </form>
+          {tags.length > 0 ? (
+            <div className="tags-input">
+              {tags.map((tag, i) => (
+                <span key={i} className="tag" onClick={() => removeTag(tag)}>
+                  <MdOutlineCancel /> {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
+          <input
+            className="text-tag"
+            type="text"
+            placeholder="태그입력 (Enter)"
+            onKeyDown={handleKeyDown}
+          />
+          <input type="hidden" name="tags" value={tags.join(",")} />
+          <button type="submit" className="submit-btn">
+            생성
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

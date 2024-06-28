@@ -6,19 +6,26 @@
   font-style: normal;
 }
 
+.community-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .post-write {
   margin: 0 auto;
   width: 70%;
-  /* height: 100vh; */
   text-align: center;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   color: white;
 }
 
 .post-write p {
+  color: black;
   margin: 20px;
   font-size: 32px;
   font-family: "Jua";
@@ -52,7 +59,7 @@
 
 .post-form textarea {
   padding: 20px;
-  height: 200px;
+  height: 400px;
   resize: none;
   overflow-y: auto;
   border-radius: 10px;

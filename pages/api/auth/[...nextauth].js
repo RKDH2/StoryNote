@@ -19,7 +19,6 @@ export const authOptions = {
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID || "",
       clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
-      allowDangerousEmailAccountLinking: true,
     }),
     // NaverProvider({
     //   clientId: process.env.NAVER_CLIENT_ID || "",

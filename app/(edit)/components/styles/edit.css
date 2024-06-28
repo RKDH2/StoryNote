@@ -9,7 +9,6 @@
 .edit-post-write {
   margin: 0 auto;
   width: 70%;
-  /* height: 100vh; */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -19,6 +18,7 @@
 }
 
 .edit-post-write p {
+  color: black;
   margin: 20px;
   font-size: 32px;
   font-family: "Jua";

@@ -41,12 +41,6 @@ export default function Edit(props) {
     fetchPost();
   }, [props.params.id]);
 
-  // useEffect(() => {
-  //   if (previewSrc) {
-  //     console.log("Preview Src Updated:", previewSrc);
-  //   }
-  // }, [previewSrc]);
-
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();

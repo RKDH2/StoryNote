@@ -6,7 +6,7 @@ export async function middleware(request) {
   const projectPaths = ["/write", "/mylist"];
   const { pathname } = request.nextUrl;
 
-  console.log("Request URL:", request.nextUrl);
+  // console.log("Request URL:", request.nextUrl);
 
   if (projectPaths.some((path) => pathname.startsWith(path))) {
     try {

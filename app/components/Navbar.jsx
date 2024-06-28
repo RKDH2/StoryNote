@@ -29,7 +29,6 @@ export default async function Navbar() {
             </>
           ) : null}
           <div className="menu-line"></div>
-
           <Link href="/">
             <p>이벤트</p>
           </Link>
