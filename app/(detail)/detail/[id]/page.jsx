@@ -20,30 +20,38 @@ export default async function Detail(props) {
   }
 
   return (
-    <div className="detail-container">
-      <p>{result.author_name}</p>
-      <p>{result.title}</p>
-      <p>{result.content}</p>
-      {result.imgSrc ? (
-        result.imgSrc.startsWith("https://") ? (
-          <img src={result.imgSrc} className="detail-img" />
-        ) : (
+    <div className="detail-background-container">
+      <div className="detail-container">
+        <div className="profile-container">
           <img
-            src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
-            className="detail-img"
+            src={result.profile_img ? result.profile_img : "/scriptparty.svg"}
+            className="profile_img"
           />
-        )
-      ) : null}
-      {result.tags && result.tags.length > 0 ? (
-        <p className="detail-tags">
-          {result.tags.split(",").map((tag, i) => (
-            <span key={i} className="detail-tag">
-              {tag}
-            </span>
-          ))}
-        </p>
-      ) : null}
-      <BackBtn />
+          <p>{result.author_name}</p>
+        </div>
+        <p className="detail-title">{result.title}</p>
+        <p className="detail-content">{result.content}</p>
+        {result.imgSrc ? (
+          result.imgSrc.startsWith("https://") ? (
+            <img src={result.imgSrc} className="detail-img" />
+          ) : (
+            <img
+              src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
+              className="detail-img"
+            />
+          )
+        ) : null}
+        {result.tags && result.tags.length > 0 ? (
+          <p className="detail-tags">
+            {result.tags.split(",").map((tag, i) => (
+              <span key={i} className="detail-tag">
+                {tag}
+              </span>
+            ))}
+          </p>
+        ) : null}
+        <BackBtn />
+      </div>
     </div>
   );
 }

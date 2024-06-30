@@ -81,6 +81,27 @@
   /* 36.77 */
 }
 
+.__register-btn__ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 35px;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 10px;
+  padding: 8px 10px;
+  border-radius: 60px;
+  border: none;
+  transition: all 0.25s;
+  text-decoration: none;
+}
+
+.__register-btn__:hover {
+  background-color: rgb(0, 115, 255);
+}
+
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
   .Navbar {
     font-size: 14px;
@@ -96,5 +117,10 @@
   }
   .Navbar a p {
     display: none;
+  }
+  .__register-btn__ {
+    text-align: center;
+    width: 5%;
+    font-size: 14px;
   }
 }

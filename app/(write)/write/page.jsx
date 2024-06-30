@@ -36,50 +36,52 @@ export default function Write(props) {
   };
 
   const handleSubmit = async (e) => {
-    let filename = encodeURIComponent(file.name);
-    try {
-      let res = await fetch("/api/forum/image?file=" + filename);
-      let data = await res.json();
-      console.log("Data:", data);
+    if (file) {
+      let filename = encodeURIComponent(file.name);
+      try {
+        let res = await fetch("/api/forum/image?file=" + filename);
+        let data = await res.json();
+        console.log("Data:", data);
 
-      //S3 업로드
-      const formData = new FormData();
-      Object.entries({ ...data.fields, file }).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      let uploadResult = await fetch(data.url, {
-        method: "POST",
-        body: formData,
-      });
-
-      console.log(uploadResult);
-
-      if (uploadResult.ok) {
-        const imageUrl = data.url + "/" + data.fields.key;
-        setSrc(
-          `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`
-        ); // 업로드된 파일의 URL 설정
-
-        const form = e.target;
-        const formDataToSend = new FormData(form);
-        formDataToSend.append("imgSrc", imageUrl);
-
-        let postImage = await fetch(form.action, {
+        //S3 업로드
+        const formData = new FormData();
+        Object.entries({ ...data.fields, file }).forEach(([key, value]) => {
+          formData.append(key, value);
+        });
+        let uploadResult = await fetch(data.url, {
           method: "POST",
-          body: formDataToSend,
+          body: formData,
         });
 
-        if (postImage.ok) {
-          // 성공적으로 포스트를 작성한 후 원하는 동작 수행
-          console.log("포스트 작성 성공");
+        console.log(uploadResult);
+
+        if (uploadResult.ok) {
+          const imageUrl = data.url + "/" + data.fields.key;
+          setSrc(
+            `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`
+          ); // 업로드된 파일의 URL 설정
+
+          const form = e.target;
+          const formDataToSend = new FormData(form);
+          formDataToSend.append("imgSrc", imageUrl);
+
+          let postImage = await fetch(form.action, {
+            method: "POST",
+            body: formDataToSend,
+          });
+
+          if (postImage.ok) {
+            // 성공적으로 포스트를 작성한 후 원하는 동작 수행
+            console.log("포스트 작성 성공");
+          } else {
+            console.log("포스트 작성 실패");
+          }
         } else {
-          console.log("포스트 작성 실패");
+          console.log("업로드 실패");
         }
-      } else {
-        console.log("업로드 실패");
+      } catch (error) {
+        console.error("파일 업로드 중 오류 발생:", error);
       }
-    } catch (error) {
-      console.error("파일 업로드 중 오류 발생:", error);
     }
   };
 
@@ -151,7 +153,7 @@ export default function Write(props) {
           <input
             className="text-tag"
             type="text"
-            placeholder="태그입력 (Enter)"
+            placeholder="태그입력 (Enter) #은 입력하지 않아도 됨 (자동입력)"
             onKeyDown={handleKeyDown}
           />
           <input type="hidden" name="tags" value={tags.join(",")} />

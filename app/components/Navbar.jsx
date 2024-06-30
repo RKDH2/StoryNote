@@ -54,6 +54,9 @@ export default async function Navbar() {
                 alt="프로필적용안됨"
               /> */}
               <LoginBtn />
+              <Link href="/signup" className="__register-btn__">
+                <p>회원가입</p>
+              </Link>
             </>
           )}
         </div>

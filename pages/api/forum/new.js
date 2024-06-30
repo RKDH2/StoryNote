@@ -13,9 +13,7 @@ export default async function handler(req, res) {
     try {
       let body = req.body;
 
-      if (typeof req.body === "string") {
-        body = JSON.parse(req.body);
-      }
+      body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
       const email = session.user.email;
       const testdb = (await connectDB).db("test");

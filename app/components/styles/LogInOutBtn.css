@@ -1,4 +1,9 @@
 .__Log-In-Out-Btn__ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 35px;
   background-color: black;
   color: rgb(255, 255, 255);
   font-weight: bold;

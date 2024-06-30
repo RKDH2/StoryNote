@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap");
+
+.nanum-gothic-coding-regular {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.signup-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-form {
+  margin-top: 100px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.signup-form div {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-logo-img {
+  text-align: center;
+}
+
+.signup-form div p {
+  font-size: 13px;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.signup-form div input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
+  box-shadow: 1px 1px 2px 0px grey;
+}
+
+.signup-form div span {
+  font-size: 12px;
+  color: red;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.signup-form button {
+  width: 80%;
+  padding: 13px;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
+  color: grey;
+}
+
+.signup-form button:hover {
+  background-color: rgb(0, 115, 255);
+  color: white;
+}
