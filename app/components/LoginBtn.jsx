@@ -2,6 +2,7 @@
 
 import { signIn, signOut } from "next-auth/react";
 import "@/app/components/styles/LogInOutBtn.css";
+import { IoLogInOutline } from "react-icons/io5";
 
 export default function LoginBtn() {
   return (
@@ -12,6 +13,7 @@ export default function LoginBtn() {
       }}
     >
       Login
+      <IoLogInOutline size={20} className="__IoLogInOutline__" />
     </button>
   );
 }

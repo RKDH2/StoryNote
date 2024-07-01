@@ -1,75 +1,52 @@
-.jua-regular {
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 .nanum-gothic-coding-regular {
   font-family: "Nanum Gothic Coding", monospace;
   font-weight: 400;
   font-style: normal;
 }
 
-.Navbar {
+.Footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   width: 100vw;
-  height: 8vh;
-  padding: 10px 40px;
-  background-color: white;
+  height: 10vh;
+  background-color: rgb(255, 255, 255);
   font-size: 13px;
   font-family: "Nanum Gothic Coding", monospace;
   font-weight: 600;
   font-style: normal;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
+  box-shadow: 0 -1px 8px -2px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
   z-index: 100;
 }
 
-.navbar-container {
+.footer-items {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
 }
 
-.menu-line {
-  width: 1px;
-  background-color: grey;
-}
-
-.logo-img {
-  margin-right: 50px;
-}
-
-.logo-img img {
-  height: 4vh;
-}
-
-.menu-items {
-  display: flex;
-}
-
-.menu-items a {
+.footer-items a {
   padding: 0 20px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
-.menu-items a:hover {
+.footer-items a:hover {
   color: rgb(0, 115, 255);
 }
 
-.login-section {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.profile {
+.footer-profile {
   border: 1.5px solid rgb(101, 101, 101);
   border-radius: 50%;
   width: 33px;
@@ -78,7 +55,7 @@
   /* 36.77 */
 }
 
-.__register-btn__ {
+.__footer-register-btn__ {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,34 +72,37 @@
   text-decoration: none;
 }
 
-.__register-btn__:hover {
+.__footer-register-btn__:hover {
   background-color: rgb(0, 115, 255);
 }
 
-@media only screen and (min-width: 720px) and (max-width: 1024px) {
-  .Navbar {
-    font-size: 12px;
+@media only screen and (min-width: 720px) {
+  .Footer {
+    display: none;
   }
-  .__register-btn__ {
-    width: 45px;
+  .__footer-register-btn__ {
+    width: 60px;
     height: 30px;
-    font-size: 0px;
+    font-size: 9px;
   }
   .__IoLogInOutline__ {
-    display: block;
+    display: none;
   }
 }
 
 @media only screen and (max-width: 720px) {
-  .__register-btn__ {
+  .Footer {
+    font-size: 11px;
+  }
+  .__footer-register-btn__ {
     width: 45px;
     height: 30px;
     font-size: 0px;
   }
-  .menu-items {
+}
+
+@media only screen and (max-width: 450px) {
+  .footer-items a p {
     display: none;
-  }
-  .logo-img {
-    display: block;
   }
 }

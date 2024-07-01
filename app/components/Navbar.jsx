@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import LoginBtn from "../components/LoginBtn";
 import LogOutBtn from "../components/LogOutBtn";
+import { MdAccountCircle } from "react-icons/md";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);
@@ -55,7 +56,10 @@ export default async function Navbar() {
               /> */}
               <LoginBtn />
               <Link href="/signup" className="__register-btn__">
-                <p>회원가입</p>
+                <p>
+                  회원가입
+                  <MdAccountCircle size={20} className="__IoLogInOutline__" />
+                </p>
               </Link>
             </>
           )}

@@ -18,18 +18,28 @@
   background-color: rgb(0, 115, 255);
 }
 
-@media only screen and (max-width: 600px) {
+.__IoLogInOutline__ {
+  display: none;
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1024px) {
   .__Log-In-Out-Btn__ {
-    text-align: center;
-    width: 5%;
-    font-size: 14px;
+    width: 50px;
+    height: 30px;
+    font-size: 0px;
+  }
+  .__IoLogInOutline__ {
+    display: block;
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 750px) {
   .__Log-In-Out-Btn__ {
-    text-align: center;
-    width: 3%;
-    font-size: 12px;
+    width: 50px;
+    height: 30px;
+    font-size: 0px;
+  }
+  .__IoLogInOutline__ {
+    display: block;
   }
 }
