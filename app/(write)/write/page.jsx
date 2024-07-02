@@ -3,7 +3,14 @@
 import { useRef, useState } from "react";
 import "../components/style/write.css";
 import { MdOutlineCancel } from "react-icons/md";
-import MarkdownEditor from "../../(Editor)/components/MarkdownEditor"; // 간단한 마크다운 에디터 컴포넌트 가져오기
+// import MarkdownEditor from "../../(Editor)/components/MarkdownEditor";
+import dynamic from "next/dynamic";
+const ToastEditor = dynamic(
+  () => import("../../(Editor)/components/ToastEditor"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Write(props) {
   const [tags, setTags] = useState([]);
@@ -117,7 +124,8 @@ export default function Write(props) {
             placeholder="제목을 입력하시오"
             required
           />
-          <MarkdownEditor onChange={handleMarkdownChange} />
+          <ToastEditor value={content} onChange={handleMarkdownChange} />
+          {/* <MarkdownEditor onChange={handleMarkdownChange} /> */}
           <textarea
             className="content-input"
             name="content"
