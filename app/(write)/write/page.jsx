@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import "../components/style/write.css";
 import { MdOutlineCancel } from "react-icons/md";
+import MarkdownEditor from "../../(Editor)/components/MarkdownEditor"; // 간단한 마크다운 에디터 컴포넌트 가져오기
 
 export default function Write(props) {
   const [tags, setTags] = useState([]);
@@ -10,6 +11,7 @@ export default function Write(props) {
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
   const [file, setFile] = useState(null); // 파일 상태
   const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
+  const [content, setContent] = useState("");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -64,6 +66,7 @@ export default function Write(props) {
           const form = e.target;
           const formDataToSend = new FormData(form);
           formDataToSend.append("imgSrc", imageUrl);
+          // formDataToSend.append("content", content);
 
           let postImage = await fetch(form.action, {
             method: "POST",
@@ -93,6 +96,10 @@ export default function Write(props) {
     }
   };
 
+  const handleMarkdownChange = (content) => {
+    setContent(content);
+  };
+
   return (
     <div className="community-container">
       <div className="post-write">
@@ -110,10 +117,14 @@ export default function Write(props) {
             placeholder="제목을 입력하시오"
             required
           />
+          <MarkdownEditor onChange={handleMarkdownChange} />
           <textarea
             className="content-input"
             name="content"
             placeholder="내용을 입력하시오"
+            style={{ display: "none" }}
+            value={content}
+            readOnly
             required
           />
           <div className="container-image">
