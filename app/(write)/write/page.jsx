@@ -125,14 +125,14 @@ export default function Write(props) {
             required
           />
           {/* <ToastEditor value={content} onChange={handleMarkdownChange} /> */}
-          <MarkdownEditor onChange={handleMarkdownChange} />
+          {/* <MarkdownEditor onChange={handleMarkdownChange} /> */}
           <textarea
             className="content-input"
             name="content"
             placeholder="내용을 입력하시오"
-            style={{ display: "none" }}
-            value={content}
-            readOnly
+            // style={{ display: "none" }}
+            // value={content}
+            // readOnly
             required
           />
           <div className="container-image">
