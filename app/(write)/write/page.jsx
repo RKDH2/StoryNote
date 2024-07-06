@@ -137,7 +137,7 @@ export default function Write(props) {
           />
           <div className="container-image">
             <label htmlFor="file">
-              <div className="btn-upload">이미지 업로드</div>
+              <div className="btn-upload">이미지 업로드!</div>
             </label>
             <input
               id="file"
