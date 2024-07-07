@@ -133,7 +133,7 @@ export default function Write(props) {
             // style={{ display: "none" }}
             // value={content}
             // readOnly
-            required
+            // required
           />
           <div className="container-image">
             <label htmlFor="file">
