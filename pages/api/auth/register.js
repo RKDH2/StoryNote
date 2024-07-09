@@ -3,10 +3,10 @@ import bcrypt from "bcrypt"; // 암호화 라이브러리
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { id, email, password } = req.body;
+    const { id, email, password, realName } = req.body;
 
     // 입력 값 검증
-    if (!id.trim() || !email.trim() || !password.trim()) {
+    if (!id.trim() || !email.trim() || !password.trim() || !realName.trim()) {
       return res
         .status(400)
         .json({ error: "이름, 이메일, 비밀번호는 필수 입력 항목입니다." });
@@ -17,7 +17,8 @@ export default async function handler(req, res) {
       email.length > 30 ||
       // password.length > 30 ||
       id.length < 4 ||
-      password.length < 6
+      password.length < 6 ||
+      realName.length < 2
     ) {
       let errors = {};
       if (id.length > 15) {
@@ -35,6 +36,9 @@ export default async function handler(req, res) {
       if (password.length < 6) {
         errors.password = "비밀번호는 6글자보다 짧을 수 없습니다.";
       }
+      if (realName.length < 2) {
+        errors.password = "실명은 2글자보다 짧을 수 없습니다.";
+      }
 
       // 이메일 유효성 검사 (예시: 간단한 형식 확인)
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,13 +49,18 @@ export default async function handler(req, res) {
       return res.status(400).json({ errors });
     }
 
-    let db = (await connectDB).db("forum");
+    let db = (await connectDB).db("signup");
     const existingUser = await db.collection("user_cred").findOne({ email });
-    const passwordUser = await db.collection("user_cred").findOne({ password });
+    // const passwordUser = await db.collection("user_cred").findOne({ password });
     const idUser = await db.collection("user_cred").findOne({ id });
+    // const realNameUser = await db.collection("user_cred").findOne({ realName });
 
-    if (existingUser && passwordUser && idUser) {
-      return res.status(400).json({ error: "이미 사용 중인 이메일입니다." });
+    if (existingUser) {
+      return res.status(400).json({ error: "중복된 이메일입니다." });
+    }
+
+    if (idUser) {
+      return res.status(400).json({ error: "중복된 아이디입니다." });
     }
 
     let hash = await bcrypt.hash(req.body.password, 10);
@@ -60,6 +69,6 @@ export default async function handler(req, res) {
     req.body.password = hash;
 
     await db.collection("user_cred").insertOne(req.body);
-    res.status(200).redirect(process.env.NEXTAUTH_URL);
+    res.status(200).redirect("/");
   }
 }

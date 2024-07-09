@@ -32,6 +32,7 @@ export const authOptions = {
       //1. 로그인페이지 폼 자동생성해주는 코드
       name: "credentials",
       credentials: {
+        id: { label: "id", type: "text" },
         email: { label: "email", type: "text" },
         password: { label: "password", type: "password" },
       },
@@ -40,11 +41,18 @@ export const authOptions = {
       //직접 DB에서 아이디,비번 비교하고
       //아이디,비번 맞으면 return 결과, 틀리면 return null 해야함
       async authorize(credentials) {
-        let db = (await connectDB).db("forum");
-        let user = await db
+        let db = (await connectDB).db("signup");
+        let userId = await db
+          .collection("user_cred")
+          .findOne({ id: credentials.id });
+        let userEmail = await db
           .collection("user_cred")
           .findOne({ email: credentials.email });
-        if (!user) {
+        if (!userId) {
+          console.log("해당 아이디는 없음");
+          return null;
+        }
+        if (!userEmail) {
           console.log("해당 이메일은 없음");
           return null;
         }

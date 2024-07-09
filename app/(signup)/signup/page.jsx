@@ -13,6 +13,7 @@ export default function Signup() {
   const [idMsg, setIdMsg] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
   const [emailMsg, setEmailMsg] = useState("");
+  const [realNameMsg, setRealNameMsg] = useState("");
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -26,6 +27,7 @@ export default function Signup() {
 
       if (response.status === 200) {
         alert("회원가입 성공");
+        window.location.href = "/";
       }
     } catch (error) {
       console.log("회원가입 에러");
@@ -34,6 +36,7 @@ export default function Signup() {
         setIdMsg(error.response.data.errors.id);
         setPasswordMsg(error.response.data.errors.password);
         setEmailMsg(error.response.data.errors.email);
+        setRealNameMsg(error.response.data.errors.realName);
       } else {
         alert("알 수 없는 오류가 발생했습니다.");
       }
@@ -81,6 +84,18 @@ export default function Signup() {
             onChange={(e) => setEmail(e.target.value)}
           />
           {emailMsg.length !== 0 ? <span>{emailMsg}</span> : null}
+        </div>
+        <div>
+          <p>실명</p>
+          <input
+            name="realName"
+            type="text"
+            placeholder="ex)홍길동"
+            required
+            autoComplete="realName"
+            onChange={(e) => setRealNameMsg(e.target.value)}
+          />
+          {realNameMsg.length !== 0 ? <span>{realNameMsg}</span> : null}
         </div>
         <button type="submit">회원가입</button>
       </form>
