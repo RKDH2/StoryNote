@@ -9,6 +9,7 @@ export default function Signup() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [realName, setRealName] = useState("");
 
   const [idMsg, setIdMsg] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
@@ -23,6 +24,7 @@ export default function Signup() {
         id: id,
         password: password,
         email: email,
+        realName: realName,
       });
 
       if (response.status === 200) {
@@ -59,7 +61,7 @@ export default function Signup() {
             autoComplete="username"
             onChange={(e) => setId(e.target.value)}
           />
-          {idMsg.length !== 0 ? <span>{idMsg}</span> : null}
+          {idMsg && idMsg.length !== 0 ? <span>{idMsg}</span> : null}
         </div>
         <div>
           <p>비밀번호</p>
@@ -71,7 +73,9 @@ export default function Signup() {
             autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          {passwordMsg.length !== 0 ? <span>{passwordMsg}</span> : null}
+          {passwordMsg && passwordMsg.length !== 0 ? (
+            <span>{passwordMsg}</span>
+          ) : null}
         </div>
         <div>
           <p>이메일</p>
@@ -83,7 +87,7 @@ export default function Signup() {
             autoComplete="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          {emailMsg.length !== 0 ? <span>{emailMsg}</span> : null}
+          {emailMsg && emailMsg.length !== 0 ? <span>{emailMsg}</span> : null}
         </div>
         <div>
           <p>실명</p>
@@ -93,9 +97,11 @@ export default function Signup() {
             placeholder="ex)홍길동"
             required
             autoComplete="realName"
-            onChange={(e) => setRealNameMsg(e.target.value)}
+            onChange={(e) => setRealName(e.target.value)}
           />
-          {realNameMsg.length !== 0 ? <span>{realNameMsg}</span> : null}
+          {realName && realNameMsg.length !== 0 ? (
+            <span>{realNameMsg}</span>
+          ) : null}
         </div>
         <button type="submit">회원가입</button>
       </form>

@@ -37,7 +37,7 @@ export default async function handler(req, res) {
         errors.password = "비밀번호는 6글자보다 짧을 수 없습니다.";
       }
       if (realName.length < 2) {
-        errors.password = "실명은 2글자보다 짧을 수 없습니다.";
+        errors.realName = "실명은 2글자보다 짧을 수 없습니다.";
       }
 
       // 이메일 유효성 검사 (예시: 간단한 형식 확인)

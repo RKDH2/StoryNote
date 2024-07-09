@@ -42,20 +42,20 @@ export const authOptions = {
       //아이디,비번 맞으면 return 결과, 틀리면 return null 해야함
       async authorize(credentials) {
         let db = (await connectDB).db("signup");
-        let userId = await db
-          .collection("user_cred")
-          .findOne({ id: credentials.id });
-        let userEmail = await db
+        let user = await db
           .collection("user_cred")
           .findOne({ email: credentials.email });
-        if (!userId) {
-          console.log("해당 아이디는 없음");
-          return null;
-        }
-        if (!userEmail) {
+
+        if (!user) {
           console.log("해당 이메일은 없음");
           return null;
         }
+
+        if (user.id !== credentials.id) {
+          console.log("해당 아이디는 없음");
+          return null;
+        }
+
         const pwcheck = await bcrypt.compare(
           credentials.password,
           user.password

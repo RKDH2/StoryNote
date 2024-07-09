@@ -42,7 +42,9 @@ export default async function Navbar() {
             <>
               <img
                 className="profile"
-                src={`${session.user.image}`}
+                src={
+                  null || undefined ? `${session.user.image}` : "/noprofile.svg"
+                }
                 alt="프로필"
               />
               <LogOutBtn />
