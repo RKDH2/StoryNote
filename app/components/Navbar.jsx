@@ -10,7 +10,7 @@ import { ObjectId } from "mongodb";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);
-  let db = (await connectDB).db("signup");
+  // let db = (await connectDB).db("signup");
   // let result = await db.collection("user_cred").findOne(session.user._id);
 
   return (
@@ -46,11 +46,7 @@ export default async function Navbar() {
             <>
               <img
                 className="profile"
-                src={
-                  session
-                    ? session.user.image || "/public/noprofile.svg"
-                    : "/public/noprofile.svg"
-                }
+                src={session.user.image || "/public/noprofile.svg"}
                 alt="프로필"
               />
               <LogOutBtn />

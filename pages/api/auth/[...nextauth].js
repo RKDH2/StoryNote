@@ -81,18 +81,43 @@ export const authOptions = {
     jwt: async ({ token, user }) => {
       console.log(user);
       if (user) {
-        token.user = {
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        };
+        if (user.profileImg) {
+          // 일반 로그인 (이메일/비밀번호) 시
+          token.user = {
+            name: user.name,
+            email: user.email,
+            image: user.profileImg,
+          };
+        } else {
+          // 소셜 로그인 시
+          token.user = {
+            name: user.name,
+            email: user.email,
+            image: user.image,
+          };
+        }
+      } else if (token.email) {
+        // 이미 로그인한 사용자의 경우 데이터베이스에서 프로필 이미지를 가져옴
+        let db = (await connectDB).db("signup");
+        let dbUser = await db
+          .collection("user_cred")
+          .findOne({ email: token.email });
+
+        if (dbUser && dbUser.profileImg) {
+          token.user.image = dbUser.profileImg;
+        }
       }
       console.log("Token:", token);
       return token;
     },
     // 유저 세션이 조회될 때 마다 실행되는 코드
     session: async ({ session, token }) => {
-      session.user = token.user;
+      // session.user = token.user;
+      session.user = {
+        name: token.user.name,
+        email: token.user.email,
+        image: token.user.image,
+      };
       return session;
     },
   },
