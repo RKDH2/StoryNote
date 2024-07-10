@@ -3,6 +3,7 @@ import bcrypt from "bcrypt"; // 암호화 라이브러리
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
+    console.log(req.body);
     const { id, email, password, realName } = req.body;
 
     // 입력 값 검증

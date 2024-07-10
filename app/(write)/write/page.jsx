@@ -5,6 +5,7 @@ import "../components/style/write.css";
 import { MdOutlineCancel } from "react-icons/md";
 import MarkdownEditor from "../../(Editor)/components/MarkdownEditor";
 import dynamic from "next/dynamic";
+
 const ToastEditor = dynamic(
   () => import("../../(Editor)/components/ToastEditor"),
   {
@@ -18,7 +19,7 @@ export default function Write(props) {
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
   const [file, setFile] = useState(null); // 파일 상태
   const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
-  const [content, setContent] = useState("");
+  // const [content, setContent] = useState("");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -103,9 +104,9 @@ export default function Write(props) {
     }
   };
 
-  const handleMarkdownChange = (content) => {
-    setContent(content);
-  };
+  // const handleMarkdownChange = (content) => {
+  //   setContent(content);
+  // };
 
   return (
     <div className="community-container">

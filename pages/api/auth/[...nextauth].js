@@ -15,15 +15,15 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_OAUTH_ID || "",
-      clientSecret: process.env.GOOGLE_OAUTH_SECRET || "",
-    }),
-    KakaoProvider({
-      clientId: process.env.KAKAO_CLIENT_ID || "",
-      clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
-      allowDangerousEmailAccountLinking: true,
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_OAUTH_ID || "",
+    //   clientSecret: process.env.GOOGLE_OAUTH_SECRET || "",
+    // }),
+    // KakaoProvider({
+    //   clientId: process.env.KAKAO_CLIENT_ID || "",
+    //   clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
+    //   allowDangerousEmailAccountLinking: true,
+    // }),
     NaverProvider({
       clientId: process.env.NAVER_CLIENT_ID || "",
       clientSecret: process.env.NAVER_CLIENT_SECRET || "",
@@ -78,20 +78,13 @@ export const authOptions = {
   callbacks: {
     // jwt 만들 때 실행되는 코드
     // user 변수는 DB의 유저 정보가 담겨 있고 token.user에 저장하면 jwt에 들어갑니다.
-    jwt: async ({ token, user, profile }) => {
+    jwt: async ({ token, user }) => {
       console.log(user);
       if (user) {
         token.user = {
           name: user.name,
           email: user.email,
           image: user.image,
-        };
-      } else if (profile) {
-        // KakaoProvider에서 받은 프로필 정보를 토큰에 추가합니다.
-        token.user = {
-          name: profile.username || "No Username", // Kakao의 경우 username을 사용할 수 있습니다.
-          email: profile.email || "No Email",
-          image: profile.image || "No Image",
         };
       }
       console.log("Token:", token);

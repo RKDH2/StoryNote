@@ -5,9 +5,13 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import LoginBtn from "../components/LoginBtn";
 import LogOutBtn from "../components/LogOutBtn";
 import { MdAccountCircle } from "react-icons/md";
+import { connectDB } from "@/util/database";
+import { ObjectId } from "mongodb";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);
+  let db = (await connectDB).db("signup");
+  // let result = await db.collection("user_cred").findOne(session.user._id);
 
   return (
     <div className="Navbar">
@@ -43,7 +47,9 @@ export default async function Navbar() {
               <img
                 className="profile"
                 src={
-                  null || undefined ? `${session.user.image}` : "/noprofile.svg"
+                  session
+                    ? session.user.image || "/public/noprofile.svg"
+                    : "/public/noprofile.svg"
                 }
                 alt="프로필"
               />
@@ -51,11 +57,6 @@ export default async function Navbar() {
             </>
           ) : (
             <>
-              {/* <img
-                className="profile"
-                src="/noprofile.svg"
-                alt="프로필적용안됨"
-              /> */}
               <LoginBtn />
               <Link href="/signup" className="__register-btn__">
                 <p>
