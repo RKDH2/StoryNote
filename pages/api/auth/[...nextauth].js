@@ -79,12 +79,12 @@ export const authOptions = {
     // jwt 만들 때 실행되는 코드
     // user 변수는 DB의 유저 정보가 담겨 있고 token.user에 저장하면 jwt에 들어갑니다.
     jwt: async ({ token, user }) => {
-      console.log(user);
+      console.log("USER이다 : ", user);
       if (user) {
         if (user.profileImg) {
           // 일반 로그인 (이메일/비밀번호) 시
           token.user = {
-            name: user.name,
+            name: user.id,
             email: user.email,
             image: user.profileImg,
           };
@@ -107,7 +107,7 @@ export const authOptions = {
           token.user.image = dbUser.profileImg;
         }
       }
-      console.log("Token:", token);
+      console.log("Token--:", token);
       return token;
     },
     // 유저 세션이 조회될 때 마다 실행되는 코드
@@ -118,6 +118,7 @@ export const authOptions = {
         email: token.user.email,
         image: token.user.image,
       };
+      console.log("여기가 중요! : ", session);
       return session;
     },
   },

@@ -4,7 +4,7 @@ import { authOptions } from "../auth/[...nextauth]";
 
 export default async function handler(req, res) {
   let session = await getServerSession(req, res, authOptions);
-  console.log(session);
+  console.log("테스트:", session);
   if (session) {
     const getCurrentTime = () => {
       return new Date();
@@ -15,16 +15,30 @@ export default async function handler(req, res) {
 
       body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
 
-      const email = session.user.email;
-      const testdb = (await connectDB).db("test");
-      const users = await testdb.collection("users").findOne({ email: email });
-      console.log("User:", users);
+      let db;
+      let users;
 
-      req.body.profile_img = users.image;
+      if (session.user.email) {
+        // 소셜 로그인 사용자
+        const email = session.user.email;
+        db = (await connectDB).db("test");
+        users = await db.collection("users").findOne({ email: email });
+        req.body.profile_img = users.image;
+        req.body.author_name = session.user.name; // 유저 이름
+      } else {
+        // JWT 사용자 (회원가입)
+        const email = session.user.email; // JWT 사용자의 경우도 이메일 정보를 얻어올 수 있어야 함
+        db = (await connectDB).db("signup");
+        users = await db.collection("user_cred").findOne({ email: email });
+        req.body.profile_img = users.profileImg;
+        req.body.author_name = session.user.id; // 유저 이름
+      }
+
       req.body.post_id = users._id;
       req.body.author = session.user.email; // 이메일 정보
-      req.body.author_name = session.user.name; // 유저 이름
       req.body.post_time = getCurrentTime();
+
+      console.log("User:", users);
 
       req.body = JSON.stringify(body);
     } catch (error) {
