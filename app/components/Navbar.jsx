@@ -10,9 +10,6 @@ import { ObjectId } from "mongodb";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);
-  // let db = (await connectDB).db("signup");
-  // let result = await db.collection("user_cred").findOne(session.user._id);
-
   return (
     <div className="Navbar">
       <header className="navbar-container">

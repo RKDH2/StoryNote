@@ -16,7 +16,7 @@
 .signup-form {
   margin-top: 100px;
   margin-bottom: 100px;
-  width: 40%;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,4 +120,10 @@
 
 #file {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .signup-form {
+    width: 80vw;
+  }
 }

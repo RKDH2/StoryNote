@@ -46,27 +46,28 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  text-overflow: ellipsis;
+  flex-wrap: wrap;
+  gap: 5px;
+  /* text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap; */
 }
 
 .detail-tag {
   margin: 0px 5px 0px 0px;
   padding: 5px 10px;
   border-radius: 50px;
-  background-color: grey;
-  color: white;
+  background-color: rgb(234, 234, 234);
+  color: rgb(80, 80, 80);
   font-family: "Jua";
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s;
 }
 
 .detail-tag:hover {
-  background-color: black;
-  color: white;
+  color: rgb(0, 157, 255);
 }
 
 .back-btn {
