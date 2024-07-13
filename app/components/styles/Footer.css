@@ -101,7 +101,7 @@
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 400px) {
   .footer-items a p {
     display: none;
   }

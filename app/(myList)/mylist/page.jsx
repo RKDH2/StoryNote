@@ -1,40 +1,54 @@
 import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import MyList from "../components/MyList";
 
 export const dynamic = "force-dynamic";
 
 export default async function MyPostList() {
-  const db = (await connectDB).db("forum");
+  try {
+    const db = (await connectDB).db("forum");
 
-  let session = await getServerSession(authOptions);
+    // 세션 가져오기
+    const session = await getServerSession(authOptions);
 
-  const email = session.user.email;
+    if (!session || !session.user) {
+      throw new Error("세션이 없거나 사용자 정보가 없습니다.");
+    }
 
-  const testdb = (await connectDB).db("test");
-  const users = await testdb.collection("users").findOne({ email: email });
-  const userId = users._id.toString();
+    const email = session.user.email;
 
-  // console.log(session);
-  // console.log(userId);
+    const testdb = (await connectDB).db("test");
+    const users = await testdb.collection("users").findOne({ email });
 
-  let result = await db
-    .collection("community_post")
-    .find({ post_id: userId })
-    .sort({ post_time: -1 })
-    .toArray();
+    if (!users) {
+      throw new Error("해당 이메일을 가진 사용자를 찾을 수 없습니다.");
+    }
 
-  result = result.map((a) => {
-    a._id = a._id.toString();
-    return a;
-  });
+    const userId = users._id.toString();
 
-  // console.log(result);
+    let result = await db
+      .collection("community_post")
+      .find({ post_id: userId })
+      .sort({ post_time: -1 })
+      .toArray();
 
-  return (
-    <div className="list-background">
-      <MyList result={result} session={session} />
-    </div>
-  );
+    result = result.map((a) => {
+      a._id = a._id.toString();
+      return a;
+    });
+
+    return (
+      <div className="list-background">
+        <MyList result={result} session={session} />
+      </div>
+    );
+  } catch (error) {
+    console.error("오류 발생:", error.message);
+    // 오류가 발생한 경우 빈 배열을 반환하여 처리
+    return (
+      <div className="list-background">
+        <MyList result={[]} />
+      </div>
+    );
+  }
 }

@@ -81,7 +81,7 @@ export const authOptions = {
     jwt: async ({ token, user }) => {
       console.log("USER이다 : ", user);
       if (user) {
-        if (user.profileImg) {
+        if (user) {
           // 일반 로그인 (이메일/비밀번호) 시
           token.user = {
             name: user.id,
@@ -107,18 +107,20 @@ export const authOptions = {
           token.user.image = dbUser.profileImg;
         }
       }
-      console.log("Token--:", token);
+      console.log("이미로그인:", token);
       return token;
     },
     // 유저 세션이 조회될 때 마다 실행되는 코드
     session: async ({ session, token }) => {
       // session.user = token.user;
-      session.user = {
-        name: token.user.name,
-        email: token.user.email,
-        image: token.user.image,
-      };
-      console.log("여기가 중요! : ", session);
+      if (token && token.user) {
+        session.user = {
+          name: token.user.name,
+          email: token.user.email,
+          image: token.user.image,
+        };
+      }
+      console.log("최종 유저 데이터 : ", session);
       return session;
     },
   },
