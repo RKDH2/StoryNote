@@ -5,8 +5,6 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import LoginBtn from "../components/LoginBtn";
 import LogOutBtn from "../components/LogOutBtn";
 import { MdAccountCircle } from "react-icons/md";
-import { connectDB } from "@/util/database";
-import { ObjectId } from "mongodb";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);

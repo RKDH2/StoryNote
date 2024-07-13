@@ -138,14 +138,22 @@ body {
 }
 
 html {
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 /* ---------------------------------------------------- */
 .layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+  width: 100vw;
+  padding-bottom: 10vh;
 }
 
 /* 스크롤바 스타일 설정 */
@@ -162,11 +170,6 @@ html {
 .layout::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
   border-radius: 4px;
-}
-
-main {
-  flex: 1;
-  margin-bottom: 120px;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {

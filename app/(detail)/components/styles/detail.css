@@ -1,5 +1,6 @@
 .detail-background-container {
   width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,9 +10,8 @@
 .detail-container {
   padding: 20px;
   width: 70%;
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  min-height: calc(100vh - 10vh);
   color: rgb(0, 0, 0);
-  margin-bottom: 103.2px;
 }
 
 .profile-container {
