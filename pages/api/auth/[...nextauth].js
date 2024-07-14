@@ -5,8 +5,6 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import KakaoProvider from "next-auth/providers/kakao";
 import NaverProvider from "next-auth/providers/naver";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
 
 export const authOptions = {
   providers: [
@@ -15,112 +13,41 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_OAUTH_ID || "",
-    //   clientSecret: process.env.GOOGLE_OAUTH_SECRET || "",
-    // }),
-    // KakaoProvider({
-    //   clientId: process.env.KAKAO_CLIENT_ID || "",
-    //   clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
-    //   allowDangerousEmailAccountLinking: true,
-    // }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_OAUTH_ID || "",
+      clientSecret: process.env.GOOGLE_OAUTH_SECRET || "",
+    }),
+    KakaoProvider({
+      clientId: process.env.KAKAO_CLIENT_ID || "",
+      clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
+      allowDangerousEmailAccountLinking: true,
+    }),
     NaverProvider({
       clientId: process.env.NAVER_CLIENT_ID || "",
       clientSecret: process.env.NAVER_CLIENT_SECRET || "",
     }),
-    CredentialsProvider({
-      //1. 로그인페이지 폼 자동생성해주는 코드
-      name: "credentials",
-      credentials: {
-        id: { label: "id", type: "text" },
-        email: { label: "email", type: "text" },
-        password: { label: "password", type: "password" },
-      },
-
-      //2. 로그인요청시 실행되는코드
-      //직접 DB에서 아이디,비번 비교하고
-      //아이디,비번 맞으면 return 결과, 틀리면 return null 해야함
-      async authorize(credentials) {
-        let db = (await connectDB).db("signup");
-        let user = await db
-          .collection("user_cred")
-          .findOne({ email: credentials.email });
-
-        if (!user) {
-          console.log("해당 이메일은 없음");
-          return null;
-        }
-
-        if (user.id !== credentials.id) {
-          console.log("해당 아이디는 없음");
-          return null;
-        }
-
-        const pwcheck = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-        if (!pwcheck) {
-          console.log("비밀번호가 틀렸습니다.");
-          return null;
-        }
-        return user;
-      },
-    }),
   ],
 
-  //3. jwt 써놔야 잘됩니다 + jwt 만료일설정
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, //30일
+    maxAge: 30 * 24 * 60 * 60, // 30일
   },
 
   callbacks: {
-    // jwt 만들 때 실행되는 코드
-    // user 변수는 DB의 유저 정보가 담겨 있고 token.user에 저장하면 jwt에 들어갑니다.
     jwt: async ({ token, user }) => {
-      console.log("USER이다 : ", user);
       if (user) {
-        if (user) {
-          // 일반 로그인 (이메일/비밀번호) 시
-          token.user = {
-            name: user.id,
-            email: user.email,
-            image: user.profileImg,
-          };
-        } else {
-          // 소셜 로그인 시
-          token.user = {
-            name: user.name,
-            email: user.email,
-            image: user.image,
-          };
-        }
-      } else if (token.email) {
-        // 이미 로그인한 사용자의 경우 데이터베이스에서 프로필 이미지를 가져옴
-        let db = (await connectDB).db("signup");
-        let dbUser = await db
-          .collection("user_cred")
-          .findOne({ email: token.email });
-
-        if (dbUser && dbUser.profileImg) {
-          token.user.image = dbUser.profileImg;
-        }
-      }
-      console.log("이미로그인:", token);
-      return token;
-    },
-    // 유저 세션이 조회될 때 마다 실행되는 코드
-    session: async ({ session, token }) => {
-      // session.user = token.user;
-      if (token && token.user) {
-        session.user = {
-          name: token.user.name,
-          email: token.user.email,
-          image: token.user.image,
+        // 일반 로그인 (이메일/비밀번호) 시
+        token.user = {
+          name: user.name,
+          email: user.email,
+          image: user.image,
         };
       }
-      console.log("최종 유저 데이터 : ", session);
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user = token.user;
+      console.log("최종 데이터:", session);
       return session;
     },
   },

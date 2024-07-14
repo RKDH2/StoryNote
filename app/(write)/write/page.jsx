@@ -13,7 +13,7 @@ const ToastEditor = dynamic(
   }
 );
 
-export default function Write(props) {
+export default function Write() {
   const [tags, setTags] = useState([]);
   const [src, setSrc] = useState(""); // 이미지 업로드 보기
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기

@@ -38,9 +38,7 @@ export default function PostList({ result, session }) {
               <div className="title-post-name_time">
                 <a href={`/detail/${post._id}`} className="post-name">
                   <img
-                    src={
-                      post.profile_img ? post.profile_img : "/scriptparty.svg"
-                    }
+                    src={post.profile_img ? post.profile_img : "/noprofile.svg"}
                     className="profile_img"
                   />
                   {post.author_name}

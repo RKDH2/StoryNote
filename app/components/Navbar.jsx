@@ -49,12 +49,6 @@ export default async function Navbar() {
           ) : (
             <>
               <LoginBtn />
-              <Link href="/signup" className="__register-btn__">
-                <p>
-                  회원가입
-                  <MdAccountCircle size={20} className="__IoLogInOutline__" />
-                </p>
-              </Link>
             </>
           )}
         </div>

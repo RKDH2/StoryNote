@@ -23,9 +23,10 @@ export default async function Detail(props) {
       <div className="detail-container">
         <div className="profile-container">
           <img
-            src={result.profile_img ? result.profile_img : "/scriptparty.svg"}
+            src={result.profile_img ? result.profile_img : "/noprofile.svg"}
             className="profile_img"
           />
+
           <p>{result.author_name}</p>
         </div>
         <p className="detail-title">{result.title}</p>

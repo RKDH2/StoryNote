@@ -37,18 +37,6 @@ export default async function handler(req, res) {
 
         req.body.profile_img = users.image;
         req.body.author_name = session.user.name; // 유저 이름
-      } else {
-        // JWT 사용자 (회원가입)
-        const email = session.user.email; // JWT 사용자의 경우도 이메일 정보를 얻어올 수 있어야 함
-        db = (await connectDB).db("signup");
-        users = await db.collection("user_cred").findOne({ email });
-
-        if (!users) {
-          throw new Error("해당 이메일을 가진 사용자를 찾을 수 없습니다.");
-        }
-
-        req.body.profile_img = users.profileImg;
-        req.body.author_name = session.user.id; // 유저 이름
       }
 
       req.body.post_id = users._id;
@@ -64,7 +52,7 @@ export default async function handler(req, res) {
         }
         try {
           const db = (await connectDB).db("forum");
-          await db.collection("community_post").insertOne(JSON.parse(req.body));
+          await db.collection("community_post").insertOne(req.body);
           res.status(200).redirect("/community");
         } catch {
           res.status(500).json({ error: "DB오류" });

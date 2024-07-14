@@ -18,6 +18,21 @@ export default async function Community() {
     return a;
   });
 
+  result = result.map((post) => {
+    // post_time 필드가 Date 객체가 아니면 변환
+    const postTime =
+      post.post_time instanceof Date
+        ? post.post_time
+        : new Date(post.post_time);
+
+    return {
+      ...post,
+      _id: post._id.toString(),
+      post_id: post.post_id.toString(),
+      post_time: postTime.toISOString(),
+    };
+  });
+
   let session = await getServerSession(authOptions);
 
   return (

@@ -1,15 +1,15 @@
 import { connectDB } from "@/util/database";
-import { getServerSession } from "next-auth";
 import MyList from "../components/MyList";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export const dynamic = "force-dynamic";
 
 export default async function MyPostList() {
   try {
-    const db = (await connectDB).db("forum");
-
     // 세션 가져오기
     const session = await getServerSession(authOptions);
+    console.log("세션 가져오기", session);
 
     if (!session || !session.user) {
       throw new Error("세션이 없거나 사용자 정보가 없습니다.");
@@ -20,13 +20,18 @@ export default async function MyPostList() {
     const testdb = (await connectDB).db("test");
     const users = await testdb.collection("users").findOne({ email });
 
+    const userId = users._id.toString();
+    console.log(userId);
+
+    console.log("유저 조회", users);
+
     if (!users) {
       throw new Error("해당 이메일을 가진 사용자를 찾을 수 없습니다.");
     }
 
-    const userId = users._id.toString();
+    const forumDb = (await connectDB).db("forum");
 
-    let result = await db
+    let result = await forumDb
       .collection("community_post")
       .find({ post_id: userId })
       .sort({ post_time: -1 })
@@ -36,6 +41,8 @@ export default async function MyPostList() {
       a._id = a._id.toString();
       return a;
     });
+
+    console.log(result);
 
     return (
       <div className="list-background">
