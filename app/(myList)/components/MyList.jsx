@@ -6,7 +6,7 @@ import "../components/styles/mylist.css";
 export default function MyList({ result, session }) {
   return (
     <div className="my-list-container">
-      {result.length > 0 ? (
+      {result && result.length > 0 ? (
         result.map((post, i) => (
           <div className="my-post-list" key={i}>
             <Link prefetch={false} href={`/detail/${post._id}`}>
