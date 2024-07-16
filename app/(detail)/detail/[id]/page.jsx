@@ -6,6 +6,7 @@ import "../../components/styles/detail.css";
 import BackBtn from "../../components/BackBtn";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Comment from "../../components/Comment";
 
 export default async function Detail(props) {
   const db = (await connectDB).db("forum");
@@ -21,12 +22,12 @@ export default async function Detail(props) {
   return (
     <div className="detail-background-container">
       <div className="detail-container">
+        {/* <BackBtn /> */}
         <div className="profile-container">
           <img
             src={result.profile_img ? result.profile_img : "/noprofile.svg"}
             className="profile_img"
           />
-
           <p>{result.author_name}</p>
         </div>
         <p className="detail-title">{result.title}</p>
@@ -52,7 +53,7 @@ export default async function Detail(props) {
             ))}
           </p>
         ) : null}
-        <BackBtn />
+        <Comment _id={result._id.toString()} />
       </div>
     </div>
   );

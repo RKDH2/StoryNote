@@ -47,7 +47,6 @@ export const authOptions = {
     },
     session: async ({ session, token }) => {
       session.user = token.user;
-      console.log("최종 데이터:", session);
       return session;
     },
   },

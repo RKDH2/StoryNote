@@ -3,15 +3,6 @@
 import { useRef, useState } from "react";
 import "../components/style/write.css";
 import { MdOutlineCancel } from "react-icons/md";
-import MarkdownEditor from "../../(Editor)/components/MarkdownEditor";
-import dynamic from "next/dynamic";
-
-const ToastEditor = dynamic(
-  () => import("../../(Editor)/components/ToastEditor"),
-  {
-    ssr: false,
-  }
-);
 
 export default function Write() {
   const [tags, setTags] = useState([]);
@@ -19,7 +10,6 @@ export default function Write() {
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
   const [file, setFile] = useState(null); // 파일 상태
   const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
-  // const [content, setContent] = useState("");
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -104,10 +94,6 @@ export default function Write() {
     }
   };
 
-  // const handleMarkdownChange = (content) => {
-  //   setContent(content);
-  // };
-
   return (
     <div className="community-container">
       <div className="post-write">
@@ -125,16 +111,11 @@ export default function Write() {
             placeholder="제목을 입력하시오"
             required
           />
-          {/* <ToastEditor value={content} onChange={handleMarkdownChange} /> */}
-          {/* <MarkdownEditor onChange={handleMarkdownChange} /> */}
+
           <textarea
             className="content-input"
             name="content"
             placeholder="내용을 입력하시오"
-            // style={{ display: "none" }}
-            // value={content}
-            // readOnly
-            // required
           />
           <div className="container-image">
             <label htmlFor="file">
