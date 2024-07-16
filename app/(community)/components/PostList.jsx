@@ -19,7 +19,6 @@ export default function PostList({ result, session }) {
       });
       const data = await response.json();
       setPosts(data);
-      console.log("Data", data);
     }
 
     fetchPosts();
