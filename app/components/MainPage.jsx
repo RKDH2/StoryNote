@@ -1,5 +1,5 @@
-import Link from "next/link";
 import stylys from "../components/styles/MainPage.module.css";
+import Community from "../(community)/community/page";
 
 export default function MainPage({ result, session }) {
   return (
@@ -13,6 +13,8 @@ export default function MainPage({ result, session }) {
           <br /> and write down your stories.
         </div>
       </div>
+      <img className={stylys.main_img_mobile} src="/mainpageIMG.svg" />
+      <Community />
     </div>
   );
 }
