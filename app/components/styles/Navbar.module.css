@@ -28,42 +28,42 @@
   z-index: 100;
 }
 
-.navbar-container {
+.navbar_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 
-.menu-line {
+.menu_line {
   width: 1px;
   background-color: grey;
 }
 
-.logo-img {
+.logo_img {
   margin-right: 50px;
 }
 
-.logo-img img {
+.logo_img img {
   height: 4vh;
 }
 
-.menu-items {
+.menu_items {
   display: flex;
 }
 
-.menu-items a {
+.menu_items a {
   padding: 0 20px;
   border-radius: 5px;
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
-.menu-items a:hover {
+.menu_items a:hover {
   color: rgb(0, 115, 255);
 }
 
-.login-section {
+.login_section {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -78,35 +78,9 @@
   /* 36.77 */
 }
 
-.__register-btn__ {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 35px;
-  background-color: black;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 10px;
-  padding: 8px 10px;
-  border-radius: 60px;
-  border: none;
-  transition: all 0.25s;
-  text-decoration: none;
-}
-
-.__register-btn__:hover {
-  background-color: rgb(0, 115, 255);
-}
-
 @media only screen and (min-width: 720px) and (max-width: 1024px) {
   .Navbar {
     font-size: 12px;
-  }
-  .__register-btn__ {
-    width: 45px;
-    height: 30px;
-    font-size: 0px;
   }
   .__IoLogInOutline__ {
     display: block;
@@ -114,15 +88,10 @@
 }
 
 @media only screen and (max-width: 720px) {
-  .__register-btn__ {
-    width: 45px;
-    height: 30px;
-    font-size: 0px;
-  }
-  .menu-items {
+  .menu_items {
     display: none;
   }
-  .logo-img {
+  .logo_img {
     display: block;
   }
 }

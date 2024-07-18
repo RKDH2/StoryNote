@@ -27,10 +27,6 @@ export default function PostList({ result, session }) {
 
   return (
     <>
-      <div className="community-logo">
-        <p>커뮤니티</p>
-        <p>사람들과 소통하면서 지식을 넓히고 이야기를 적으세요.</p>
-      </div>
       <div className="list-container">
         {posts.length > 0 ? (
           posts.map((post, i) => (
@@ -45,9 +41,15 @@ export default function PostList({ result, session }) {
                 </a>
               </div>
               <div className="post-title-box">
+                <a className="post-title" href={`/detail/${post._id}`}>
+                  {post.title}
+                </a>
+                <a className="post-content" href={`/detail/${post._id}`}>
+                  {post.content}
+                </a>
                 {post.imgSrc ? (
                   post.imgSrc.startsWith("https://") ? (
-                    <img src={post.imgSrc} className="detail-img" />
+                    <img src={post.imgSrc} className="post-img" />
                   ) : (
                     <img
                       src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
@@ -55,12 +57,6 @@ export default function PostList({ result, session }) {
                     />
                   )
                 ) : null}
-                <a href={`/detail/${post._id}`} className="post-title">
-                  {post.title}
-                </a>
-                <a href={`/detail/${post._id}`} className="post-content">
-                  {post.content}
-                </a>
               </div>
               <div className="post-footer">
                 {post.tags && post.tags.length > 0 ? (

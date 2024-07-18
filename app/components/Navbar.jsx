@@ -1,20 +1,20 @@
 import Link from "next/link";
-import "./styles/Navbar.css";
+import styles from "./styles/Navbar.module.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import LoginBtn from "../components/LoginBtn";
-import LogOutBtn from "../components/LogOutBtn";
+import LoginBtn from "./LoginBtn";
+import LogOutBtn from "./LogOutBtn";
 import { MdAccountCircle } from "react-icons/md";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);
   return (
-    <div className="Navbar">
-      <header className="navbar-container">
-        <Link href="/" className="logo-img">
+    <div className={styles.Navbar}>
+      <header className={styles.navbar_container}>
+        <Link href="/" className={styles.logo_img}>
           <img src="/ScriptPartyLogo.svg" />
         </Link>
-        <div className="menu-items">
+        <div className={styles.menu_items}>
           <Link href="/community">
             <p>커뮤니티</p>
           </Link>
@@ -28,7 +28,7 @@ export default async function Navbar() {
               </Link>
             </>
           ) : null}
-          <div className="menu-line"></div>
+          <div className={styles.menu_line}></div>
           <Link href="/">
             <p>이벤트</p>
           </Link>
@@ -36,11 +36,11 @@ export default async function Navbar() {
             <p>공지</p>
           </Link>
         </div>
-        <div className="login-section">
+        <div className={styles.login_section}>
           {session ? (
             <>
               <img
-                className="profile"
+                className={styles.profile}
                 src={session.user.image || "/public/noprofile.svg"}
                 alt="프로필"
               />

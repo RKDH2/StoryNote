@@ -1,20 +1,43 @@
 import stylys from "../components/styles/MainPage.module.css";
 import Community from "../(community)/community/page";
+import { AiFillWechat } from "react-icons/ai";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 
 export default function MainPage({ result, session }) {
   return (
     <div className={stylys.main_container}>
-      <img className={stylys.main_img} src="/mainpageIMG.svg" />
       <div className={stylys.main_text_container}>
-        <div className={stylys.img_title_text}>Community & Blog</div>
-        <div className={stylys.img_sub_text}>Get the latest news!</div>
-        <div className={stylys.img_text}>
+        <div className={stylys.title_text}>Community & Blog</div>
+        <div className={stylys.sub_text}>Get the latest news!</div>
+        <div className={stylys.text}>
           Connect with people, expand your knowledge,
           <br /> and write down your stories.
         </div>
       </div>
-      <img className={stylys.main_img_mobile} src="/mainpageIMG.svg" />
-      <Community />
+      <div className={stylys.info_text}>
+        <div>
+          <div>
+            <AiFillWechat className={stylys.icon} size={35} />
+          </div>
+          <p>Communication</p>
+        </div>
+        <div>
+          <div>
+            <IoShareSocialOutline className={stylys.icon} size={35} />
+          </div>
+          <p>Share</p>
+        </div>
+        <div>
+          <div>
+            <IoSettingsOutline className={stylys.icon} size={35} />
+          </div>
+          <p>Simple Setting</p>
+        </div>
+      </div>
+      <div>
+        <Community />
+      </div>
     </div>
   );
 }
