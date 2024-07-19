@@ -1,0 +1,42 @@
+.loadingWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8); /* 반투명 배경 */
+  z-index: 9999; /* 페이지 위에 표시되도록 */
+}
+
+.loadingBar {
+  width: 80%;
+  height: 10px;
+  background: #f3f3f3;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loadingBar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  animation: loading 2s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

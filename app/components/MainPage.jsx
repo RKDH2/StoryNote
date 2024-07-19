@@ -26,7 +26,7 @@ export default function MainPage({ result, session }) {
           <div>
             <IoShareSocialOutline className={stylys.icon} size={35} />
           </div>
-          <p>Share</p>
+          <p>Fast Share</p>
         </div>
         <div>
           <div>
@@ -35,6 +35,7 @@ export default function MainPage({ result, session }) {
           <p>Simple Setting</p>
         </div>
       </div>
+      <div className={stylys.post_text}>New Post!</div>
       <div>
         <Community />
       </div>
