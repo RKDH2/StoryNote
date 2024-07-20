@@ -25,7 +25,7 @@
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
     "@toast-ui/editor": "^3.2.2",
-    "aws-sdk": "^2.1646.0",
+    "aws-sdk": "^2.1659.0",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "ckeditor5": "^42.0.0",

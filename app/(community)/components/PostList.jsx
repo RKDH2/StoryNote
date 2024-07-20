@@ -19,11 +19,13 @@ export default function PostList({ result, session }) {
       });
       const data = await response.json();
       setPosts(data);
-      console.log(data);
+      // console.log(data);
     }
 
     fetchPosts();
   }, []);
+
+  const AWS_S3_SRC = process.env.NEXT_PUBLIC_AWS_S3_SRC;
 
   return (
     <>
@@ -31,6 +33,22 @@ export default function PostList({ result, session }) {
         {posts.length > 0 ? (
           posts.map((post, i) => (
             <li className="post-list" key={i}>
+              {post.imgSrc ? (
+                <a className="post-img-container" href={`/detail/${post._id}`}>
+                  {post.imgSrc && (
+                    <div
+                      className="post-img"
+                      style={{
+                        backgroundImage: `url(${
+                          post.imgSrc.startsWith("https://")
+                            ? post.imgSrc
+                            : `${AWS_S3_SRC}${post.imgSrc}`
+                        })`,
+                      }}
+                    ></div>
+                  )}
+                </a>
+              ) : null}
               <div className="title-post-name">
                 <a href={`/detail/${post._id}`} className="post-name">
                   <img
@@ -47,16 +65,6 @@ export default function PostList({ result, session }) {
                 <a className="post-content" href={`/detail/${post._id}`}>
                   {post.content}
                 </a>
-                {post.imgSrc ? (
-                  post.imgSrc.startsWith("https://") ? (
-                    <img src={post.imgSrc} className="post-img" />
-                  ) : (
-                    <img
-                      src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${post.imgSrc}`}
-                      className="post-img"
-                    />
-                  )
-                ) : null}
               </div>
               <div className="post-footer">
                 {post.tags && post.tags.length > 0 ? (

@@ -12,6 +12,7 @@
   width: 70%;
   min-height: calc(100vh - 10vh);
   color: rgb(0, 0, 0);
+  margin-bottom: 10vh;
 }
 
 .profile-container {
