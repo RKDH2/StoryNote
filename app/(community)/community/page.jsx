@@ -2,6 +2,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
 import PostList from "../components/PostList";
+import "../components/styles/community.css";
 
 export const dynamic = "force-dynamic";
 
