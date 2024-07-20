@@ -39,7 +39,7 @@ export default async function MyPostList() {
     result = result.map((a) => {
       a._id = a._id.toString();
       a.post_id = a.post_id.toString();
-      a.post_time = a.post_time.toISOString();
+      a.post_time = a.post_time.toString();
       return a;
     });
 

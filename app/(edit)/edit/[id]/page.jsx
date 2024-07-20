@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../../components/styles/edit.css";
 import { MdOutlineCancel } from "react-icons/md";
+import { getSession } from "next-auth/react";
 
 export default function Edit(props) {
   const [tags, setTags] = useState([]);
@@ -110,10 +111,16 @@ export default function Edit(props) {
     }
 
     try {
+      const session = await getSession();
+      if (!session) {
+        throw new Error("No session found");
+      }
+
       const response = await fetch("/api/forum/edit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${session.accessToken}`,
         },
         body: JSON.stringify({
           id: props.params.id,
