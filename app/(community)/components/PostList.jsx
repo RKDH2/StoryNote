@@ -52,8 +52,8 @@ export default function PostList({ result, session }) {
                     <img src={post.imgSrc} className="post-img" />
                   ) : (
                     <img
-                      src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
-                      className="detail-img"
+                      src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${post.imgSrc}`}
+                      className="post-img"
                     />
                   )
                 ) : null}
