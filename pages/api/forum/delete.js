@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         res.status(404).json("게시물을 찾을 수 없습니다");
       }
 
-      if (find.post_id == users._id) {
+      if (find.post_id.equals(users._id)) {
         await db
           .collection("community_post")
           .deleteOne({ _id: new ObjectId(req.body) });

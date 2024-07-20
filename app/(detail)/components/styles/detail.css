@@ -27,6 +27,9 @@
   line-height: 40px;
   font-size: 1.875rem;
   font-weight: bold;
+  word-wrap: break-word; /* 오래된 표준 */
+  overflow-wrap: break-word; /* 최신 표준 */
+  word-break: break-word; /* 긴 단어가 줄을 넘어가지 않도록 설정 */
 }
 
 .detail-content {
