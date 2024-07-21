@@ -272,20 +272,10 @@
   .myListContainer {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .myPostList {
-    width: 300px;
-    height: 350px;
-  }
 }
 
 @media (max-width: 765px) {
   .myListContainer {
     grid-template-columns: 1fr;
-  }
-
-  .myPostList {
-    width: 300px;
-    height: 350px;
   }
 }
