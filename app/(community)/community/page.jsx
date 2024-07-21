@@ -2,7 +2,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 import { getServerSession } from "next-auth";
 import PostList from "../components/PostList";
-import "../components/styles/community.css";
+import styles from "../components/styles/community.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +37,7 @@ export default async function Community() {
   let session = await getServerSession(authOptions);
 
   return (
-    <div className="list-background">
+    <div className={styles.list_background}>
       <PostList result={result} session={session} />
     </div>
   );

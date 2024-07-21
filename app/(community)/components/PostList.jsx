@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import "./styles/community.css";
+import styles from "./styles/community.module.css";
 import { useEffect, useState } from "react";
 
 export const dynamic = "force-dynamic";
@@ -29,15 +29,18 @@ export default function PostList({ result, session }) {
 
   return (
     <>
-      <div className="list-container">
+      <div className={styles.list_container}>
         {posts.length > 0 ? (
           posts.map((post, i) => (
-            <li className="post-list" key={i}>
+            <li className={styles.post_list} key={i}>
               {post.imgSrc ? (
-                <a className="post-img-container" href={`/detail/${post._id}`}>
+                <a
+                  className={styles.post_img_container}
+                  href={`/detail/${post._id}`}
+                >
                   {post.imgSrc && (
                     <div
-                      className="post-img"
+                      className={styles.post_img}
                       style={{
                         backgroundImage: `url(${
                           post.imgSrc.startsWith("https://")
@@ -49,39 +52,39 @@ export default function PostList({ result, session }) {
                   )}
                 </a>
               ) : null}
-              <div className="title-post-name">
-                <a href={`/detail/${post._id}`} className="post-name">
+              <div className={styles.title_post_name}>
+                <a href={`/detail/${post._id}`} className={styles.post_name}>
                   <img
                     src={post.profile_img ? post.profile_img : "/noprofile.svg"}
-                    className="profile_img"
+                    className={styles.profile_img}
                   />
                   {post.author_name}
                 </a>
               </div>
-              <div className="post-title-box">
-                <a className="post-title" href={`/detail/${post._id}`}>
+              <div className={styles.post_title_box}>
+                <a className={styles.post_title} href={`/detail/${post._id}`}>
                   {post.title}
                 </a>
-                <a className="post-content" href={`/detail/${post._id}`}>
+                <a className={styles.post_content} href={`/detail/${post._id}`}>
                   {post.content}
                 </a>
               </div>
-              <div className="post-footer">
+              <div className={styles.post_footer}>
                 {post.tags && post.tags.length > 0 ? (
-                  <p className="post-tags">
+                  <p className={styles.post_tags}>
                     {post.tags.split(",").map((tag, i) => (
-                      <span key={i} className="post-tag">
+                      <span key={i} className={styles.post_tag}>
                         #{tag}
                       </span>
                     ))}
                   </p>
                 ) : null}
-                <a className="post-time">{post.post_time}</a>
+                <a className={styles.post_time}>{post.post_time}</a>
               </div>
             </li>
           ))
         ) : (
-          <div className="no-post">
+          <div className={styles.no_post}>
             <Link href="/write">최초로 댓글을 달아보세요!</Link>
           </div>
         )}

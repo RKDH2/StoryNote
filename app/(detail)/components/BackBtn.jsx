@@ -2,14 +2,14 @@
 
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-import "../components/styles/detail.css";
+import styles from "./styles/detail.module.css";
 
 export default function BackBtn() {
   const router = useRouter();
 
   return (
     <button
-      className="back-btn"
+      className={styles.backBtn}
       onClick={() => {
         router.back();
       }}

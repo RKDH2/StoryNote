@@ -4,7 +4,7 @@
   font-style: normal;
 }
 
-.Footer {
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,14 +23,14 @@
   z-index: 100;
 }
 
-.footer-items {
+.footerItems {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
 
-.footer-items a {
+.footerItems a {
   padding: 0 20px;
   border-radius: 5px;
   display: flex;
@@ -42,65 +42,24 @@
   text-decoration: none;
 }
 
-.footer-items a:hover {
+.footerItems a:hover {
   color: rgb(0, 115, 255);
 }
 
-.footer-profile {
-  border: 1.5px solid rgb(101, 101, 101);
-  border-radius: 50%;
-  width: 33px;
-  height: 33px;
-}
-
-.__footer-register-btn__ {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 35px;
-  background-color: black;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-size: 10px;
-  padding: 8px 10px;
-  border-radius: 60px;
-  border: none;
-  transition: all 0.25s;
-  text-decoration: none;
-}
-
-.__footer-register-btn__:hover {
-  background-color: rgb(0, 115, 255);
-}
-
 @media only screen and (min-width: 720px) {
-  .Footer {
-    display: none;
-  }
-  .__footer-register-btn__ {
-    width: 60px;
-    height: 30px;
-    font-size: 9px;
-  }
-  .__IoLogInOutline__ {
+  .footer {
     display: none;
   }
 }
 
 @media only screen and (max-width: 720px) {
-  .Footer {
+  .footer {
     font-size: 11px;
-  }
-  .__footer-register-btn__ {
-    width: 45px;
-    height: 30px;
-    font-size: 0px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .footer-items a p {
+  .footerItems a p {
     display: none;
   }
 }

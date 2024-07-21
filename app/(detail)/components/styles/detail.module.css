@@ -1,4 +1,4 @@
-.detail-background-container {
+.detailBackgroundContainer {
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.detail-container {
+.detailContainer {
   padding: 0 20px 20px 20px;
   width: 70%;
   min-height: calc(100vh - 10vh);
@@ -15,14 +15,14 @@
   margin-bottom: 10vh;
 }
 
-.profile-container {
+.profileContainer {
   margin: 10px 0;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.detail-title {
+.detailTitle {
   margin: 50px 0;
   line-height: 40px;
   font-size: 1.875rem;
@@ -32,7 +32,7 @@
   word-break: break-word; /* 긴 단어가 줄을 넘어가지 않도록 설정 */
 }
 
-.detail-content {
+.detailContent {
   line-height: 40px;
   font-family: "Pretendard, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
   margin: 10px 0;
@@ -40,13 +40,13 @@
   color: rgb(50, 50, 50);
 }
 
-.profile_img {
+.profileImg {
   width: 30px;
   height: 30px;
   border-radius: 50px;
 }
 
-.detail-tags {
+.detailTags {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -57,7 +57,7 @@
   white-space: nowrap; */
 }
 
-.detail-tag {
+.detailTag {
   margin: 0px 5px 0px 0px;
   padding: 5px 10px;
   border-radius: 50px;
@@ -70,11 +70,11 @@
   transition: all 0.3s;
 }
 
-.detail-tag:hover {
+.detailTag:hover {
   color: rgb(0, 157, 255);
 }
 
-.back-btn {
+.backBtn {
   background-color: rgba(0, 0, 0, 0);
   color: rgb(0, 0, 0);
   margin-top: 10px;
@@ -84,7 +84,7 @@
   text-align: center;
 }
 
-.detail-img {
+.detailImg {
   max-width: 100%;
   height: auto;
   display: block;
@@ -92,7 +92,7 @@
 }
 
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-  .detail-container {
+  .detailContainer {
     padding: 20px;
     width: 90%;
     height: 100%;
@@ -100,7 +100,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .detail-container {
+  .detailContainer {
     padding: 20px;
     width: 95%;
     height: 100%;

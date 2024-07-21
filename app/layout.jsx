@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loading from "./loading";
 import { Suspense } from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +17,9 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  let session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body className={`${inter.className} layout`}>
@@ -23,7 +27,7 @@ export default function RootLayout({ children }) {
         <Suspense fallback={<Loading />}>
           <main>{children}</main>
         </Suspense>
-        <Footer />
+        <Footer session={session} />
       </body>
     </html>
   );

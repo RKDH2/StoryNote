@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap");
 
-.nanum-gothic-coding-regular {
+.nanumGothicCodingRegular {
   font-family: "Nanum Gothic Coding", monospace;
   font-weight: 400;
   font-style: normal;
 }
 
-.list-background {
+.listBackground {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.my-list-container {
+.myListContainer {
   width: 60%;
   height: 100vh;
   display: flex;
@@ -30,22 +30,22 @@
 }
 
 /* 스크롤바 스타일 설정 */
-.my-list-container::-webkit-scrollbar {
-  width: 8px; /*스크롤바 너비*/
-  height: 8px; /*스크롤바 높이*/
+.myListContainer::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.my-list-container::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
+.myListContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
 
-.my-list-container::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+.myListContainer::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
-.my-post-list {
+.myPostList {
   width: 100%;
   background-color: rgba(50, 50, 50, 0.7);
   padding: 10px;
@@ -56,18 +56,17 @@
   font-style: normal;
 }
 
-.my-post-list a {
+.myPostList a {
   text-decoration: none;
   color: white;
 }
 
-.my-title-time {
+.myTitleTime {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
-.my-post-title {
+.myPostTitle {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -75,7 +74,7 @@
   font-size: 20px;
 }
 
-.my-post-content {
+.myPostContent {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -83,16 +82,16 @@
   font-size: 16px;
 }
 
-.my-post-time {
+.myPostTime {
   font-size: 12px;
   color: grey;
 }
 
-.my-post-time:hover {
+.myPostTime:hover {
   color: white;
 }
 
-.my-post-tags {
+.myPostTags {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -101,7 +100,7 @@
   white-space: nowrap;
 }
 
-.my-post-tag {
+.myPostTag {
   margin: 0px 5px 0px 0px;
   padding: 5px;
   border-radius: 50px;
@@ -116,19 +115,19 @@
   transition: all 0.3s;
 }
 
-.my-post-tag:hover {
+.myPostTag:hover {
   background-color: black;
   color: white;
 }
-/* ------------------------------------- */
-.my-no-post {
+
+.myNoPost {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.my-no-post a {
+.myNoPost a {
   font-size: 30px;
   color: white;
   font-weight: bold;
@@ -136,13 +135,13 @@
   transition: all 0.3s;
 }
 
-.my-no-post a:hover {
+.myNoPost a:hover {
   transform: scale(1.2);
   color: yellow;
   text-decoration: underline yellow;
 }
-/* ------------------------------------- */
-.edit-btn {
+
+.editBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +151,7 @@
   text-align: center;
 }
 
-.edit-btn a {
+.editBtn a {
   width: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
@@ -161,7 +160,7 @@
   transition: all 0.3s;
 }
 
-.edit-btn button {
+.editBtn button {
   width: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -175,66 +174,66 @@
   transition: all 0.3s;
 }
 
-.edit-btn a:hover,
-.edit-btn button:hover {
+.editBtn a:hover,
+.editBtn button:hover {
   background-color: rgb(255, 255, 255);
   color: black;
 }
 
-/* ---------------------------------------------------- */
+/* 미디어 쿼리 */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-  .my-list-container {
+  .myListContainer {
     width: 80%;
   }
-  .my-post-title {
+  .myPostTitle {
     font-size: 18px;
     padding-bottom: 8px;
   }
 
-  .my-post-content {
+  .myPostContent {
     font-size: 14px;
     padding-bottom: 8px;
   }
 
-  .my-post-time {
+  .myPostTime {
     font-size: 8px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .my-list-container {
+  .myListContainer {
     width: 90%;
   }
-  .my-post-title {
+  .myPostTitle {
     font-size: 16px;
     padding-bottom: 8px;
   }
 
-  .my-post-content {
+  .myPostContent {
     font-size: 12px;
     padding-bottom: 8px;
   }
 
-  .my-post-time {
+  .myPostTime {
     font-size: 8px;
   }
 
-  .my-post-list {
+  .myPostList {
     height: 14%;
   }
 
-  .edit-btn {
+  .editBtn {
     gap: 10px;
     margin-top: 5px;
   }
 
-  .edit-btn a {
+  .editBtn a {
     width: 50%;
     padding: 3.5px;
     font-size: 12px;
   }
 
-  .edit-btn button {
+  .editBtn button {
     width: 50%;
     padding: 2px;
     border-radius: 5px;
@@ -243,18 +242,18 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .edit-btn {
+  .editBtn {
     gap: 10px;
     margin-top: 3px;
   }
 
-  .edit-btn a {
+  .editBtn a {
     width: 50%;
     padding: 2.5px;
     font-size: 9px;
   }
 
-  .edit-btn button {
+  .editBtn button {
     width: 50%;
     padding: 1px;
     border-radius: 5px;

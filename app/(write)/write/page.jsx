@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import "../components/style/write.css";
+import styles from "../components/style/write.module.css";
 import { MdOutlineCancel } from "react-icons/md";
 
 export default function Write() {
@@ -95,31 +95,30 @@ export default function Write() {
   };
 
   return (
-    <div className="community-container">
-      <div className="post-write">
+    <div className={styles.communityContainer}>
+      <div className={styles.postWrite}>
         <p>글을 작성해 보세요!</p>
         <form
-          className="post-form"
+          className={styles.postForm}
           action="/api/forum/new"
           method="POST"
           onSubmit={handleSubmit}
         >
           <input
-            className="title-input"
+            className={styles.titleInput}
             type="text"
             name="title"
             placeholder="제목을 입력하시오"
             required
           />
-
           <textarea
-            className="content-input"
+            className={styles.contentInput}
             name="content"
             placeholder="내용을 입력하시오"
           />
-          <div className="container-image">
+          <div className={styles.containerImage}>
             <label htmlFor="file">
-              <div className="btn-upload">이미지 업로드하기</div>
+              <div className={styles.btnUpload}>이미지 업로드하기</div>
             </label>
             <input
               id="file"
@@ -128,12 +127,13 @@ export default function Write() {
               name="imgSrc"
               onChange={handleFileChange}
               ref={fileInputRef}
+              className={styles.imgInputNone}
             />
             {previewSrc && (
               <>
-                <img src={previewSrc} className="image-preview" />
+                <img src={previewSrc} className={styles.imagePreview} />
                 <button
-                  className="img-delete-btn"
+                  className={styles.imgDeleteBtn}
                   type="button"
                   onClick={handleRemoveImage}
                 >
@@ -142,23 +142,27 @@ export default function Write() {
               </>
             )}
           </div>
-          {tags.length > 0 ? (
-            <div className="tags-input">
+          {tags.length > 0 && (
+            <div className={styles.tagsInput}>
               {tags.map((tag, i) => (
-                <span key={i} className="tag" onClick={() => removeTag(tag)}>
+                <span
+                  key={i}
+                  className={styles.tag}
+                  onClick={() => removeTag(tag)}
+                >
                   <MdOutlineCancel /> {tag}
                 </span>
               ))}
             </div>
-          ) : null}
+          )}
           <input
-            className="text-tag"
+            className={styles.textTag}
             type="text"
             placeholder="태그입력 (Enter) #은 입력하지 않아도 됨 (자동입력)"
             onKeyDown={handleKeyDown}
           />
           <input type="hidden" name="tags" value={tags.join(",")} />
-          <button type="submit" className="submit-btn">
+          <button type="submit" className={styles.submitBtn}>
             생성
           </button>
         </form>

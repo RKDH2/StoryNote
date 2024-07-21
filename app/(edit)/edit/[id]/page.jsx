@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import "../../components/styles/edit.css";
+import styles from "../../components/styles/edit.module.css";
 import { MdOutlineCancel } from "react-icons/md";
 import { getSession } from "next-auth/react";
 
@@ -148,27 +148,29 @@ export default function Edit(props) {
   }
 
   return (
-    <div className="edit-post-write">
+    <div className={styles.editPostWrite}>
       <p>글을 수정해 보세요!</p>
-      <form className="edit-post-form" onSubmit={handleSubmit}>
+      <form className={styles.editPostForm} onSubmit={handleSubmit}>
         <input
-          className="edit-title-input"
+          className={styles.editTitleInput}
           type="text"
           name="title"
-          defaultValue={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
+          defaultValue={postData.title}
+          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
           required
         />
         <textarea
-          className="edit-content-input"
+          className={styles.editContentInput}
           name="content"
-          defaultValue={post.content}
-          onChange={(e) => setPost({ ...post, content: e.target.value })}
+          defaultValue={postData.content}
+          onChange={(e) =>
+            setPostData({ ...postData, content: e.target.value })
+          }
           required
         />
-        <div className="edit-container-image">
+        <div className={styles.editContainerImage}>
           <label htmlFor="file">
-            <div className="btn-upload">이미지 업로드하기</div>
+            <div className={styles.btnUpload}>이미지 업로드하기</div>
           </label>
           <input
             id="file"
@@ -182,11 +184,11 @@ export default function Edit(props) {
             <>
               <img
                 src={previewSrc}
-                className="edit-image-preview"
+                className={styles.editImagePreview}
                 alt="Preview"
               />
               <button
-                className="edit-img-delete-btn"
+                className={styles.editImgDeleteBtn}
                 type="button"
                 onClick={handleRemoveImage}
               >
@@ -196,16 +198,20 @@ export default function Edit(props) {
           )}
         </div>
         {tags.length > 0 && (
-          <div className="edit-tags-input">
+          <div className={styles.editTagsInput}>
             {tags.map((tag, i) => (
-              <span key={i} className="edit-tag" onClick={() => removeTag(tag)}>
+              <span
+                key={i}
+                className={styles.editTag}
+                onClick={() => removeTag(tag)}
+              >
                 <MdOutlineCancel /> {tag}
               </span>
             ))}
           </div>
         )}
         <input
-          className="edit-text-tag"
+          className={styles.editTextTag}
           type="text"
           placeholder="태그입력 (Enter)"
           value={newTag}
@@ -213,7 +219,7 @@ export default function Edit(props) {
           onKeyDown={handleKeyDown}
         />
         <input type="hidden" name="tags" value={tags.join(",")} />
-        <button type="submit" className="submit-btn">
+        <button type="submit" className={styles.submitBtn}>
           수정
         </button>
       </form>

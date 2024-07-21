@@ -1,19 +1,14 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
-import "@/app/components/styles/LogInOutBtn.css";
+import { signIn } from "next-auth/react";
+import styles from "./styles/LogInOutBtn.module.css";
 import { IoLogInOutline } from "react-icons/io5";
 
 export default function LoginBtn() {
   return (
-    <button
-      className="__Log-In-Out-Btn__"
-      onClick={() => {
-        signIn();
-      }}
-    >
+    <button className={styles.logInOutBtn} onClick={() => signIn()}>
       Login
-      <IoLogInOutline size={20} className="__IoLogInOutline__" />
+      <IoLogInOutline size={20} className={styles.icon} />
     </button>
   );
 }

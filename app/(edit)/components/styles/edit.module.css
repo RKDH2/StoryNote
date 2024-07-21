@@ -6,48 +6,40 @@
   font-style: normal;
 }
 
-.community-container {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.post-write {
+.editPostWrite {
   margin: 0 auto;
-  width: 80%;
+  width: 70%;
   text-align: center;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
   color: white;
 }
 
-.post-write p {
+.editPostWrite p {
   color: black;
   margin: 20px;
   font-size: 32px;
   font-family: "Jua";
-  /* -webkit-text-stroke: 1px black; */
 }
 
-.post-form {
+.editPostForm {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.post-form input::placeholder,
-.post-form textarea::placeholder,
-.tags-input input::placeholder {
+.editPostForm input::placeholder,
+.editPostForm textarea::placeholder,
+.editTagsInput input::placeholder {
   color: grey;
   font-size: 14px;
   font-family: "Jua";
 }
 
-.title-input {
+.editTitleInput {
   padding: 10px 20px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -57,9 +49,9 @@
   font-size: 20px;
 }
 
-.post-form textarea {
+.editContentInput {
   padding: 20px;
-  height: 400px;
+  height: 200px;
   resize: none;
   overflow-y: auto;
   border-radius: 10px;
@@ -71,29 +63,29 @@
 }
 
 /* 스크롤바 스타일 설정 */
-.content-input::-webkit-scrollbar {
-  width: 8px; /*스크롤바 너비*/
-  height: 8px; /*스크롤바 높이*/
+.editContentInput::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.content-input::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5); /* 스크롤바 색상 */
+.editContentInput::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 4px;
   cursor: pointer;
 }
 
-.content-input::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0.1); /* 스크롤바 트랙 색상 */
+.editContentInput::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
 
-.tags-input {
+.editTagsInput {
   display: flex;
   overflow-x: auto;
   flex-wrap: nowrap;
 }
 
-.tag {
+.editTag {
   display: flex;
   margin: 5px 5px;
   padding: 5px;
@@ -108,22 +100,22 @@
 }
 
 /* 스크롤바 스타일 설정 */
-.tags-input::-webkit-scrollbar {
-  width: 8px; /*스크롤바 너비*/
-  height: 8px; /*스크롤바 높이*/
+.editTagsInput::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.tags-input::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
+.editTagsInput::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
 
-.tags-input::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+.editTagsInput::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
-.text-tag {
+.editTextTag {
   padding: 10px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -133,7 +125,7 @@
   font-size: 13px;
 }
 
-.container-image {
+.editContainerImage {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -144,14 +136,14 @@
   color: white;
 }
 
-.image-preview {
+.editImagePreview {
   margin-left: auto;
   margin-right: auto;
   max-width: 60%;
   min-height: 60%;
 }
 
-.img-delete-btn {
+.editImgDeleteBtn {
   padding: 5px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -161,7 +153,7 @@
   color: rgb(255, 0, 0);
 }
 
-.submit-btn {
+.submitBtn {
   margin-bottom: 30px;
   padding: 10px;
   border-radius: 10px;
@@ -171,8 +163,8 @@
   background-color: black;
   color: white;
 }
-/* ---------------------------------------- */
-.btn-upload {
+
+.btnUpload {
   padding: 10px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -189,4 +181,3 @@
 #file {
   display: none;
 }
-/* --------------------------------------------*/

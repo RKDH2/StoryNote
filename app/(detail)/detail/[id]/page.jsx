@@ -2,8 +2,7 @@ import { connectDB } from "@/util/database";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import "../../components/styles/detail.css";
-import BackBtn from "../../components/BackBtn";
+import styles from "../../components/styles/detail.module.css";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Comment from "../../components/Comment";
@@ -20,34 +19,36 @@ export default async function Detail(props) {
   }
 
   return (
-    <div className="detail-background-container">
-      <div className="detail-container">
-        {/* <BackBtn /> */}
-        <div className="profile-container">
+    <div className={styles.detailBackgroundContainer}>
+      <div className={styles.detailContainer}>
+        <div className={styles.profileContainer}>
           <img
             src={result.profile_img ? result.profile_img : "/noprofile.svg"}
-            className="profile_img"
+            className={styles.profileImg}
           />
           <p>{result.author_name}</p>
         </div>
-        <p className="detail-title">{result.title}</p>
-        <ReactMarkdown remarkPlugins={[remarkGfm]} className="detail-content">
+        <p className={styles.detailTitle}>{result.title}</p>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          className={styles.detailContent}
+        >
           {result.content}
         </ReactMarkdown>
         {result.imgSrc ? (
           result.imgSrc.startsWith("https://") ? (
-            <img src={result.imgSrc} className="detail-img" />
+            <img src={result.imgSrc} className={styles.detailImg} />
           ) : (
             <img
               src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
-              className="detail-img"
+              className={styles.detailImg}
             />
           )
         ) : null}
         {result.tags && result.tags.length > 0 ? (
-          <p className="detail-tags">
+          <p className={styles.detailTags}>
             {result.tags.split(",").map((tag, i) => (
-              <span key={i} className="detail-tag">
+              <span key={i} className={styles.detailTag}>
                 #{tag}
               </span>
             ))}

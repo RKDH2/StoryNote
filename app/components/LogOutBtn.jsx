@@ -1,7 +1,7 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
-import "@/app/components/styles/LogInOutBtn.css";
+import { signOut } from "next-auth/react";
+import styles from "./styles/LogInOutBtn.module.css";
 import { IoLogInOutline } from "react-icons/io5";
 
 export default function LogOutBtn() {
@@ -10,9 +10,9 @@ export default function LogOutBtn() {
   };
 
   return (
-    <button className="__Log-In-Out-Btn__" onClick={handleLogout}>
+    <button className={styles.logInOutBtn} onClick={handleLogout}>
       Sign out
-      <IoLogInOutline size={20} className="__IoLogInOutline__" />
+      <IoLogInOutline size={20} className={styles.icon} />
     </button>
   );
 }

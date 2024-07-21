@@ -3,6 +3,7 @@ import MyList from "../components/MyList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { ObjectId } from "mongodb";
+import styles from "../components/styles/mylist.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -46,7 +47,7 @@ export default async function MyPostList() {
     console.log("result:", result);
 
     return (
-      <div className="list-background">
+      <div className={styles.listBackground}>
         <MyList result={result} session={session} />
       </div>
     );
@@ -54,7 +55,7 @@ export default async function MyPostList() {
     console.error("오류 발생:", error.message);
     // 오류가 발생한 경우 빈 배열을 반환하여 처리
     return (
-      <div className="list-background">
+      <div className={styles.listBackground}>
         <MyList result={[]} />
       </div>
     );

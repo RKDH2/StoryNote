@@ -1,46 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-.jua-regular {
+.juaRegular {
   font-family: "Jua", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.edit-post-write {
-  margin: 0 auto;
-  width: 70%;
-  text-align: center;
+.communityContainer {
+  width: 100vw;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.postWrite {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
   color: white;
 }
 
-.edit-post-write p {
+.postWrite p {
   color: black;
   margin: 20px;
   font-size: 32px;
   font-family: "Jua";
-  /* -webkit-text-stroke: 1px black; */
 }
 
-.edit-post-form {
+.postForm {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.edit-post-form input::placeholder,
-.edit-post-form textarea::placeholder,
-.edit-tags-input input::placeholder {
+.postForm input::placeholder,
+.postForm textarea::placeholder,
+.tagsInput input::placeholder {
   color: grey;
   font-size: 14px;
   font-family: "Jua";
 }
 
-.edit-title-input {
+.titleInput {
   padding: 10px 20px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -50,9 +52,9 @@
   font-size: 20px;
 }
 
-.edit-post-form textarea {
+.postForm textarea {
   padding: 20px;
-  height: 200px;
+  height: 400px;
   resize: none;
   overflow-y: auto;
   border-radius: 10px;
@@ -63,40 +65,29 @@
   font-family: "Jua";
 }
 
-/* 스크롤바 스타일 설정 */
-.edit-content-input::-webkit-scrollbar {
-  width: 8px; /*스크롤바 너비*/
-  height: 8px; /*스크롤바 높이*/
+.contentInput::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.edit-content-input::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5); /* 스크롤바 색상 */
+.contentInput::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 4px;
   cursor: pointer;
 }
 
-.edit-content-input::-webkit-scrollbar-track {
-  background-color: rgba(255, 255, 255, 0.1); /* 스크롤바 트랙 색상 */
+.contentInput::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
 
-/* .edit-post-form button {
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid grey;
-  font-family: "Jua";
-  font-size: 20px;
-  background-color: black;
-  color: white;
-} */
-
-.edit-tags-input {
+.tagsInput {
   display: flex;
   overflow-x: auto;
   flex-wrap: nowrap;
 }
 
-.edit-tag {
+.tag {
   display: flex;
   margin: 5px 5px;
   padding: 5px;
@@ -110,23 +101,22 @@
   white-space: nowrap;
 }
 
-/* 스크롤바 스타일 설정 */
-.edit-tags-input::-webkit-scrollbar {
-  width: 8px; /*스크롤바 너비*/
-  height: 8px; /*스크롤바 높이*/
+.tagsInput::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-.edit-tags-input::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* 스크롤바 색상 */
+.tagsInput::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
 
-.edit-tags-input::-webkit-scrollbar-track {
-  background-color: rgba(0, 0, 0, 0.1); /* 스크롤바 트랙 색상 */
+.tagsInput::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
-.edit-text-tag {
+.textTag {
   padding: 10px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -135,8 +125,8 @@
   font-family: "Jua";
   font-size: 13px;
 }
-/* ---------------------------------------- */
-.edit-container-image {
+
+.containerImage {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -147,14 +137,14 @@
   color: white;
 }
 
-.edit-image-preview {
+.imagePreview {
   margin-left: auto;
   margin-right: auto;
   max-width: 60%;
   min-height: 60%;
 }
 
-.edit-img-delete-btn {
+.imgDeleteBtn {
   padding: 5px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -164,7 +154,7 @@
   color: rgb(255, 0, 0);
 }
 
-.submit-btn {
+.submitBtn {
   margin-bottom: 30px;
   padding: 10px;
   border-radius: 10px;
@@ -174,8 +164,8 @@
   background-color: black;
   color: white;
 }
-/* ---------------------------------------- */
-.btn-upload {
+
+.btnUpload {
   padding: 10px;
   border-radius: 10px;
   border: 2px solid grey;
@@ -189,6 +179,10 @@
   justify-content: center;
 }
 
-#file {
+/* #file {
+  display: none;
+} */
+
+.imgInputNone {
   display: none;
 }
