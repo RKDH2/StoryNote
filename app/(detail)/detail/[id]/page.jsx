@@ -7,7 +7,6 @@ import BackBtn from "../../components/BackBtn";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Comment from "../../components/Comment";
-import ImageEditor from "../../components/ImageEditor";
 
 export default async function Detail(props) {
   const db = (await connectDB).db("forum");
