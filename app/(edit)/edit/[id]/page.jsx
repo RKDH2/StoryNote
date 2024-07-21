@@ -155,14 +155,14 @@ export default function Edit(props) {
           className={styles.editTitleInput}
           type="text"
           name="title"
-          defaultValue={postData.title}
+          defaultValue={post.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
           required
         />
         <textarea
           className={styles.editContentInput}
           name="content"
-          defaultValue={postData.content}
+          defaultValue={post.content}
           onChange={(e) =>
             setPostData({ ...postData, content: e.target.value })
           }
@@ -179,6 +179,7 @@ export default function Edit(props) {
             name="imgSrc"
             onChange={handleFileChange}
             ref={fileInputRef}
+            className={styles.imgInputNone}
           />
           {previewSrc && (
             <>

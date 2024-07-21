@@ -7,26 +7,27 @@
 }
 
 .listBackground {
+  background-color: rgb(248, 255, 255);
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.myListContainer {
-  width: 60%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+}
+
+.myListContainer {
+  width: 100%;
+  height: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 20px;
-  margin: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-  overflow-x: hidden;
+  box-sizing: border-box;
+  margin-top: 2vh;
+  margin-bottom: 10vh;
 }
 
 /* 스크롤바 스타일 설정 */
@@ -46,78 +47,150 @@
 }
 
 .myPostList {
-  width: 100%;
-  background-color: rgba(50, 50, 50, 0.7);
-  padding: 10px;
-  margin: 10px;
+  position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding: 0 0 20px 0;
+  border: 0.5px solid lightgray;
+  box-sizing: border-box;
   text-align: left;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 5px 1px 10px 1px rgba(203, 203, 203, 0.399);
+}
+
+.myPostList:hover {
+  transform: translateY(-10px);
+  box-shadow: 1px 1px 10px 1px rgba(203, 203, 203, 0.599);
+}
+
+.myPostList div {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.my_title_post_name {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.my_post_name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-bottom: 20px;
+  font-size: 14px;
+  color: rgb(90, 90, 90);
+  margin-top: 20px;
+}
+
+.my_profile_img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.my_post_title_box {
+  display: flex;
+  flex-direction: column;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.my_post_img_container {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.my_post_img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.my_post_footer {
+  border-top: 1px solid lightgray;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  bottom: 0;
+  padding: 0 20px;
+}
+
+.my_post_title {
   font-family: "Nanum Gothic Coding", monospace;
   font-weight: 600;
   font-style: normal;
-}
-
-.myPostList a {
-  text-decoration: none;
-  color: white;
-}
-
-.myTitleTime {
-  display: flex;
-  justify-content: space-between;
-}
-
-.myPostTitle {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  padding-bottom: 10px;
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 0 20px;
 }
 
-.myPostContent {
+.my_post_content {
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 600;
+  font-style: normal;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  padding-bottom: 10px;
-  font-size: 16px;
+  font-size: 13px;
+  color: grey;
+  padding: 0 20px 5px 20px;
 }
 
-.myPostTime {
+.my_post_name:hover,
+.my_post_title:hover,
+.my_post_content:hover {
+  color: rgb(0, 115, 255);
+}
+
+.my_post_time {
   font-size: 12px;
   color: grey;
 }
 
-.myPostTime:hover {
-  color: white;
-}
-
-.myPostTags {
+.my_post_tags {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  margin-bottom: 10px;
 }
 
-.myPostTag {
+.my_post_tag {
   margin: 0px 5px 0px 0px;
-  padding: 5px;
-  border-radius: 50px;
-  background-color: grey;
-  color: white;
-  font-family: "Nanum Gothic Coding", monospace;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 8px;
+  color: grey;
+  font-size: 13px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.3s;
 }
 
-.myPostTag:hover {
-  background-color: black;
-  color: white;
+.my_post_tag:hover {
+  color: rgb(0, 115, 255);
 }
 
 .myNoPost {
@@ -141,32 +214,43 @@
   text-decoration: underline yellow;
 }
 
-.editBtn {
+.my_editBtn {
+  width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  margin: 10px;
   color: white;
   text-align: center;
 }
 
-.editBtn a {
+.my_editBtn a {
   width: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 115, 255);
   padding: 5px;
   border-radius: 5px;
   font-size: 16px;
   transition: all 0.3s;
 }
 
-.editBtn button {
+.my_editBtn button {
   width: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 115, 255);
   padding: 3px;
   border-radius: 5px;
-  border: none;
   font-family: "Nanum Gothic Coding", monospace;
   font-weight: 600;
   font-style: normal;
@@ -174,89 +258,34 @@
   transition: all 0.3s;
 }
 
-.editBtn a:hover,
-.editBtn button:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+.my_editBtn a:hover {
+  background-color: rgb(0, 115, 255);
+  color: white;
 }
 
-/* 미디어 쿼리 */
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-  .myListContainer {
-    width: 80%;
-  }
-  .myPostTitle {
-    font-size: 18px;
-    padding-bottom: 8px;
-  }
-
-  .myPostContent {
-    font-size: 14px;
-    padding-bottom: 8px;
-  }
-
-  .myPostTime {
-    font-size: 8px;
-  }
+.my_editBtn button:hover {
+  background-color: red;
+  color: white;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 1055px) {
   .myListContainer {
-    width: 90%;
-  }
-  .myPostTitle {
-    font-size: 16px;
-    padding-bottom: 8px;
-  }
-
-  .myPostContent {
-    font-size: 12px;
-    padding-bottom: 8px;
-  }
-
-  .myPostTime {
-    font-size: 8px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .myPostList {
-    height: 14%;
-  }
-
-  .editBtn {
-    gap: 10px;
-    margin-top: 5px;
-  }
-
-  .editBtn a {
-    width: 50%;
-    padding: 3.5px;
-    font-size: 12px;
-  }
-
-  .editBtn button {
-    width: 50%;
-    padding: 2px;
-    border-radius: 5px;
-    font-size: 12px;
+    width: 300px;
+    height: 350px;
   }
 }
 
-@media only screen and (max-width: 500px) {
-  .editBtn {
-    gap: 10px;
-    margin-top: 3px;
+@media (max-width: 765px) {
+  .myListContainer {
+    grid-template-columns: 1fr;
   }
 
-  .editBtn a {
-    width: 50%;
-    padding: 2.5px;
-    font-size: 9px;
-  }
-
-  .editBtn button {
-    width: 50%;
-    padding: 1px;
-    border-radius: 5px;
-    font-size: 9px;
+  .myPostList {
+    width: 300px;
+    height: 350px;
   }
 }
