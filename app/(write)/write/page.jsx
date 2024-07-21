@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import styles from "../components/style/write.module.css";
 import { MdOutlineCancel } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 export default function Write() {
   const [tags, setTags] = useState([]);
@@ -10,6 +11,7 @@ export default function Write() {
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
   const [file, setFile] = useState(null); // 파일 상태
   const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
+  const router = useRouter();
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -94,6 +96,12 @@ export default function Write() {
     }
   };
 
+  const handleDelete = () => {
+    if (window.confirm("정말로 취소 하시겠습니까?")) {
+      router.push("/community");
+    }
+  };
+
   return (
     <div className={styles.communityContainer}>
       <div className={styles.postWrite}>
@@ -118,7 +126,7 @@ export default function Write() {
           />
           <div className={styles.containerImage}>
             <label htmlFor="file">
-              <div className={styles.btnUpload}>이미지 업로드하기</div>
+              <div className={styles.btnUpload}>메인 이미지 업로드하기</div>
             </label>
             <input
               id="file"
@@ -162,9 +170,18 @@ export default function Write() {
             onKeyDown={handleKeyDown}
           />
           <input type="hidden" name="tags" value={tags.join(",")} />
-          <button type="submit" className={styles.submitBtn}>
-            생성
-          </button>
+          <div className={styles.btn_container}>
+            <button
+              type="button"
+              className={styles.deleteBtn}
+              onClick={handleDelete}
+            >
+              삭제
+            </button>
+            <button type="submit" className={styles.submitBtn}>
+              생성
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -45,9 +45,9 @@
 .titleInput {
   padding: 10px 20px;
   border-radius: 10px;
-  border: 2px solid grey;
-  background-color: black;
-  color: white;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
   font-family: "Jua";
   font-size: 20px;
 }
@@ -58,9 +58,9 @@
   resize: none;
   overflow-y: auto;
   border-radius: 10px;
-  border: 2px solid grey;
-  background-color: black;
-  color: white;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
   font-size: 14px;
   font-family: "Jua";
 }
@@ -92,9 +92,9 @@
   margin: 5px 5px;
   padding: 5px;
   border-radius: 50px;
-  border: 2px solid grey;
-  background-color: black;
-  color: white;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
   font-family: "Jua";
   font-size: 13px;
   cursor: pointer;
@@ -119,9 +119,9 @@
 .textTag {
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid grey;
-  background-color: black;
-  color: white;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
   font-family: "Jua";
   font-size: 13px;
 }
@@ -132,9 +132,9 @@
   gap: 10px;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid grey;
-  background-color: black;
-  color: white;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
 }
 
 .imagePreview {
@@ -147,36 +147,66 @@
 .imgDeleteBtn {
   padding: 5px;
   border-radius: 10px;
-  border: 2px solid grey;
   font-family: "Jua";
   font-size: 16px;
-  background-color: black;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
   color: rgb(255, 0, 0);
-}
-
-.submitBtn {
-  margin-bottom: 30px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid grey;
-  font-family: "Jua";
-  font-size: 20px;
-  background-color: black;
-  color: white;
 }
 
 .btnUpload {
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid grey;
   font-family: "Jua";
   font-size: 20px;
-  background-color: black;
-  color: white;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 115, 255);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submitBtn {
+  width: 48%;
+  margin-bottom: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: "Jua";
+  font-size: 20px;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 115, 255);
+  transition: all 0.3s;
+}
+
+.deleteBtn {
+  width: 48%;
+  margin-bottom: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: "Jua";
+  font-size: 20px;
+  border: 2px solid rgb(219, 219, 219);
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 115, 255);
+  transition: all 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: rgb(0, 115, 255);
+  color: white;
+}
+
+.deleteBtn:hover {
+  background-color: red;
+  color: black;
 }
 
 /* #file {
