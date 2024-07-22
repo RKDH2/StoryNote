@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Write() {
   const [tags, setTags] = useState([]);
-  const [src, setSrc] = useState(""); // 이미지 업로드 보기
+  // const [src, setSrc] = useState(""); // 이미지 업로드 보기
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
   const [file, setFile] = useState(null); // 파일 상태
   const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
@@ -53,7 +53,7 @@ export default function Write() {
           throw new Error(`Failed to get upload URL: ${res.statusText}`);
         }
         let data = await res.json();
-        console.log("Data:", data);
+        // console.log("Data:", data);
 
         //S3 업로드
         const formData = new FormData();
@@ -65,14 +65,14 @@ export default function Write() {
           body: formData,
         });
 
-        console.log("uploadResult:", uploadResult);
+        // console.log("uploadResult:", uploadResult);
 
         if (!uploadResult.ok) {
           throw new Error(`Failed to upload file: ${uploadResult.statusText}`);
         }
 
         const imageUrl = `${data.url}/${data.fields.key}`;
-        console.log("imageUrl:", imageUrl);
+        // console.log("imageUrl:", imageUrl);
 
         // setSrc(imageUrl); // 업로드된 파일의 URL 설정
 
@@ -104,7 +104,7 @@ export default function Write() {
         }
 
         let result = await postImage.json();
-        console.log("Post image success:", result);
+        // console.log("Post image success:", result);
         if (result.success) {
           router.push(result.redirectUrl); // 성공 시 페이지 이동
         }
