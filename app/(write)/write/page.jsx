@@ -104,10 +104,10 @@ export default function Write() {
         }
 
         let result = await postImage.json();
+        console.log("Post image success:", result);
         if (result.success) {
           router.push(result.redirectUrl); // 성공 시 페이지 이동
         }
-        console.log("Post image success:", await postImage.json());
       } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
       }
