@@ -35,7 +35,6 @@ export default async function MyPostList() {
       .find({ post_id: new ObjectId(userId) })
       .sort({ post_time: -1 })
       .toArray();
-    console.log("result:--", result);
 
     result = result.map((a) => {
       a._id = a._id.toString();
@@ -43,8 +42,6 @@ export default async function MyPostList() {
       a.post_time = a.post_time.toString();
       return a;
     });
-
-    console.log("result:", result);
 
     return (
       <div className={styles.listBackground}>

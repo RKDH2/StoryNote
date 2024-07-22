@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "../../components/styles/edit.module.css";
 import { MdOutlineCancel } from "react-icons/md";
 import { getSession } from "next-auth/react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Edit(props) {
   const [tags, setTags] = useState([]);
@@ -12,6 +13,7 @@ export default function Edit(props) {
   const [previewSrc, setPreviewSrc] = useState(""); // 이미지 미리보기
   const [file, setFile] = useState(null); // 파일 상태
   const fileInputRef = useRef(null); // 파일 입력 필드 참조 추가
+  const [deletedImageKey, setDeletedImageKey] = useState(null);
 
   useEffect(() => {
     async function fetchPost() {
@@ -60,16 +62,19 @@ export default function Edit(props) {
 
   const handleFileChange = (e) => {
     let selectedFile = e.target.files[0];
+    const uniqueFileName = `${uuidv4()}_${selectedFile.name}`;
 
     // 파일 미리보기 URL 생성
     const previewUrl = URL.createObjectURL(selectedFile);
-    console.log("Preview URL:", previewUrl);
     setPreviewSrc(previewUrl);
-    setFile(selectedFile); // 파일 상태 설정
+    setFile(
+      new File([selectedFile], uniqueFileName, { type: selectedFile.type })
+    );
   };
 
   const handleRemoveImage = () => {
     setPreviewSrc("");
+    setDeletedImageKey(file ? file.name : post.imgSrc);
     setFile(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
@@ -81,9 +86,10 @@ export default function Edit(props) {
 
     let imgUrl = previewSrc; // 초기값으로 previewSrc를 설정합니다.
     if (file && file.name !== post.imgSrc) {
-      let filename = encodeURIComponent(file.name);
+      const uniqueFileName = `${uuidv4()}_${file.name}`;
+      let filename = encodeURIComponent(uniqueFileName);
       try {
-        let res = await fetch("/api/forum/image?file=" + filename);
+        let res = await fetch(`/api/forum/image?file=${filename}`);
         let data = await res.json();
         console.log(data);
 
@@ -134,6 +140,16 @@ export default function Edit(props) {
 
       if (response.ok) {
         console.log("Post updated successfully!");
+
+        // 이미지 삭제 요청
+        if (deletedImageKey) {
+          await fetch("/api/forum/deleteImage", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ key: deletedImageKey }),
+          });
+        }
+
         window.location.href = "/mylist";
       } else {
         console.error("Failed to update post");
@@ -156,16 +172,14 @@ export default function Edit(props) {
           type="text"
           name="title"
           defaultValue={post.title}
-          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
           required
         />
         <textarea
           className={styles.editContentInput}
           name="content"
           defaultValue={post.content}
-          onChange={(e) =>
-            setPostData({ ...postData, content: e.target.value })
-          }
+          onChange={(e) => setPost({ ...post, content: e.target.value })}
           required
         />
         <div className={styles.editContainerImage}>

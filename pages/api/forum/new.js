@@ -17,10 +17,17 @@ export default async function handler(req, res) {
     const getCurrentTime = () => new Date();
 
     try {
-      let body = req.body;
-
-      // JSON 데이터 파싱
-      body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+      let body;
+      if (typeof req.body === "string") {
+        try {
+          body = JSON.parse(req.body);
+        } catch (error) {
+          console.error("JSON 파싱 오류:", error.message);
+          return res.status(400).json({ error: "잘못된 JSON 형식입니다." });
+        }
+      } else {
+        body = req.body;
+      }
 
       let db;
       let users;
@@ -39,24 +46,29 @@ export default async function handler(req, res) {
         req.body.author_name = session.user.name; // 유저 이름
       }
 
-      req.body.post_id = users._id;
-      req.body.author = session.user.email; // 이메일 정보
-      req.body.post_time = getCurrentTime();
+      body.post_id = users._id;
+      body.author = session.user.email; // 이메일 정보
+      body.post_time = getCurrentTime();
 
-      // console.log(req.body); // 저장된 내용
       if (req.method == "POST") {
-        if (req.body.title == "") {
+        if (body.title == "") {
           return res.status(400).json("제목입력안함");
-        } else if (req.body.content == "") {
+        } else if (body.content == "") {
           return res.status(400).json("내용입력안함");
         }
+
         try {
           const db = (await connectDB).db("forum");
-          await db.collection("community_post").insertOne(req.body);
-          res.status(200).redirect("/community");
+          await db.collection("community_post").insertOne(body);
+          return res
+            .status(200)
+            .json({ success: true, redirectUrl: "/community" });
         } catch {
+          console.error("DB 오류:", dbError.message);
           res.status(500).json({ error: "DB오류" });
         }
+      } else {
+        return res.status(405).json({ error: "허용되지 않은 메서드입니다." });
       }
     } catch (error) {
       console.error("오류 발생:", error.message);

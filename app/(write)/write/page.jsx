@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import styles from "../components/style/write.module.css";
 import { MdOutlineCancel } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Write() {
   const [tags, setTags] = useState([]);
@@ -30,18 +31,27 @@ export default function Write() {
 
   const handleFileChange = (e) => {
     let selectedFile = e.target.files[0];
+    const uniqueFileName = `${uuidv4()}_${selectedFile.name}`;
 
     // 파일 미리보기 URL 생성
     const previewUrl = URL.createObjectURL(selectedFile);
     setPreviewSrc(previewUrl);
-    setFile(selectedFile); // 파일 상태 설정
+    setFile(
+      new File([selectedFile], uniqueFileName, { type: selectedFile.type })
+    ); // 파일 상태 설정
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (file) {
-      let filename = encodeURIComponent(file.name);
+      const uniqueFileName = `${uuidv4()}_${file.name}`;
+      let filename = encodeURIComponent(uniqueFileName);
       try {
         let res = await fetch("/api/forum/image?file=" + filename);
+        if (!res.ok) {
+          throw new Error(`Failed to get upload URL: ${res.statusText}`);
+        }
         let data = await res.json();
         console.log("Data:", data);
 
@@ -55,33 +65,49 @@ export default function Write() {
           body: formData,
         });
 
-        console.log(uploadResult);
+        console.log("uploadResult:", uploadResult);
 
-        if (uploadResult.ok) {
-          const imageUrl = data.url + "/" + data.fields.key;
-          setSrc(
-            `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`
-          ); // 업로드된 파일의 URL 설정
-
-          const form = e.target;
-          const formDataToSend = new FormData(form);
-          formDataToSend.append("imgSrc", imageUrl);
-          // formDataToSend.append("content", content);
-
-          let postImage = await fetch(form.action, {
-            method: "POST",
-            body: formDataToSend,
-          });
-
-          if (postImage.ok) {
-            // 성공적으로 포스트를 작성한 후 원하는 동작 수행
-            console.log("포스트 작성 성공");
-          } else {
-            console.log("포스트 작성 실패");
-          }
-        } else {
-          console.log("업로드 실패");
+        if (!uploadResult.ok) {
+          throw new Error(`Failed to upload file: ${uploadResult.statusText}`);
         }
+
+        const imageUrl = `${data.url}/${data.fields.key}`;
+        console.log("imageUrl:", imageUrl);
+
+        // setSrc(imageUrl); // 업로드된 파일의 URL 설정
+
+        const form = e.target;
+        const formDataToSend = new FormData(form);
+        formDataToSend.append("imgSrc", imageUrl);
+
+        // JSON 형식으로 변환하여 전송
+        let postData = {
+          title: formDataToSend.get("title"),
+          content: formDataToSend.get("content"),
+          imgSrc: imageUrl,
+          tags: formDataToSend.get("tags"),
+        };
+
+        let postImage = await fetch(form.action, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        });
+
+        if (!postImage.ok) {
+          const errorText = await postImage.text();
+          throw new Error(
+            `Failed to post image: ${postImage.statusText}, ${errorText}`
+          );
+        }
+
+        let result = await postImage.json();
+        if (result.success) {
+          router.push(result.redirectUrl); // 성공 시 페이지 이동
+        }
+        console.log("Post image success:", await postImage.json());
       } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
       }
