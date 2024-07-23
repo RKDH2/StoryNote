@@ -34,8 +34,8 @@
 
 🖼️ 웹 사이트 디자인
 =============
+<img src="https://github.com/user-attachments/assets/c5d07b1d-4200-4ff4-9b12-cf220db7644d" width="300" height="700"/>
 <img src="https://github.com/user-attachments/assets/9e0f7df8-2c82-4526-96d3-18b26a1c9b6e" width="600" height="300"/>
-<img src="https://github.com/user-attachments/assets/ea05b860-d1c6-4171-b68f-94dfcf0ac9df" width="600" height="600"/>
 <img src="https://github.com/user-attachments/assets/735ade8f-b5c7-4f39-ad4a-f11a6251405a" width="600" height="600"/>
 <img src="https://github.com/user-attachments/assets/622c1b6f-d929-4955-a81d-d785577f2803" width="600" height="350"/>
 <img src="https://github.com/user-attachments/assets/7b582d19-5026-4b69-8c57-49862135376e" width="1000" height="300"/>
