@@ -1,12 +1,9 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
 
 export async function middleware(request) {
   const projectPaths = ["/write", "/mylist"];
   const { pathname } = request.nextUrl;
-
-  // console.log("Request URL:", request.nextUrl);
 
   if (projectPaths.some((path) => pathname.startsWith(path))) {
     try {
@@ -14,7 +11,6 @@ export async function middleware(request) {
         req: request,
         secret: process.env.NEXTAUTH_SECRET,
       });
-      // console.log("JWT Token:", token);
 
       if (!token) {
         return NextResponse.redirect(
