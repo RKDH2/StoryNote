@@ -35,17 +35,12 @@
   width: 100%;
 }
 
-.menu_line {
-  width: 1px;
-  background-color: grey;
-}
-
 .logo_img {
   margin-right: 50px;
 }
 
 .logo_img img {
-  height: 4vh;
+  height: 30px;
 }
 
 .menu_items {

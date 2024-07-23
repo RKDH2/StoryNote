@@ -37,6 +37,9 @@ export default async function handler(req, res) {
 
       if (find.post_id.equals(users._id)) {
         await db
+          .collection("comment")
+          .deleteMany({ parent: new ObjectId(postId) });
+        await db
           .collection("community_post")
           .deleteOne({ _id: new ObjectId(req.body) });
         res.status(200).json("삭제완료");

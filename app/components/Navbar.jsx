@@ -27,13 +27,6 @@ export default async function Navbar() {
               </Link>
             </>
           ) : null}
-          <div className={styles.menu_line}></div>
-          <Link href="/">
-            <p>이벤트</p>
-          </Link>
-          <Link href="/">
-            <p>공지</p>
-          </Link>
         </div>
         <div className={styles.login_section}>
           {session ? (

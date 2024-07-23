@@ -84,7 +84,7 @@ export default function MyList({ result, session }) {
         ))
       ) : (
         <div className={styles.my_myNoPost}>
-          <Link href="/write">댓글을 달아보세요!</Link>
+          <Link href="/write">글을 작성해보세요!</Link>
         </div>
       )}
     </div>

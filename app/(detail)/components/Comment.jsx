@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import styles from "./styles/Comment.module.css";
 
-export default function Comment(props) {
+export default function Comment(props, { session }) {
   let [comment, setComment] = useState("");
   let [data, setData] = useState([]);
 
@@ -44,20 +45,31 @@ export default function Comment(props) {
   return (
     <div>
       <hr />
-      <div>댓글부분입니다</div>
-      {data.length > 0 ? (
-        data.map((a, i) => <p key={i}>{a.comment}</p>)
-      ) : (
-        <p>로딩중(댓글없음)...</p>
-      )}
-      <input
-        value={comment}
-        onChange={(e) => {
-          setComment(e.target.value);
-        }}
-      />
-      {}
-      <button onClick={handleSubmit}>댓글발행</button>
+      <div className={styles.comment_container}>
+        <div className={styles.comment_title}>댓글</div>
+        {data.length > 0 ? (
+          data.map((a, i) => (
+            <div className={styles.comment_text} key={i}>
+              <p className={styles.user_name}>{a.author_name}</p>
+              <p>{a.comment}</p>
+            </div>
+          ))
+        ) : (
+          <p className={styles.comment_text}>로딩중(댓글없음)...</p>
+        )}
+        <div className={styles.comment_input_container}>
+          <input
+            className={styles.comment_input}
+            placeholder="댓글을 작성해보세요!"
+            value={comment}
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+            required
+          />
+          <button onClick={handleSubmit}>댓글발행</button>
+        </div>
+      </div>
     </div>
   );
 }
