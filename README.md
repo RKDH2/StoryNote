@@ -1,4 +1,4 @@
-🌄 StoryBook 🌅
+🌄 StoryNote 🌅
 =============
 <img src="https://github.com/user-attachments/assets/43f5267a-9505-4f86-a93b-f88213d403ed" width="100" height="100"/>
 
