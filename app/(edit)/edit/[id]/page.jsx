@@ -21,14 +21,12 @@ export default function Edit(props) {
         const response = await fetch(`/api/forum/findDB?id=${props.params.id}`);
         const data = await response.json();
         setPost(data);
-        // console.log("Data", data);
 
         if (data.tags) {
           setTags(data.tags.split(","));
         }
 
         if (data.imgSrc) {
-          // console.log("url:", data.imgSrc);
           const IMGSRC = data.imgSrc.startsWith("https://")
             ? data.imgSrc
             : `https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${data.imgSrc}`;
@@ -140,16 +138,6 @@ export default function Edit(props) {
 
       if (response.ok) {
         console.log("Post updated successfully!");
-
-        // 이미지 삭제 요청
-        if (deletedImageKey) {
-          await fetch("/api/forum/deleteImage", {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ key: deletedImageKey }),
-          });
-        }
-
         window.location.href = "/mylist";
       } else {
         console.error("Failed to update post");

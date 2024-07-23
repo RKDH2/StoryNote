@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export const dynamic = "force-dynamic";
 
-export default function PostList({ result, session }) {
+export default function PostList() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function PostList({ result, session }) {
       });
       const data = await response.json();
       setPosts(data);
-      // console.log(data);
     }
 
     fetchPosts();

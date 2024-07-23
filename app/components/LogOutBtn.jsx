@@ -11,7 +11,7 @@ export default function LogOutBtn() {
 
   return (
     <button className={styles.logInOutBtn} onClick={handleLogout}>
-      Sign out
+      로그아웃
       <IoLogInOutline size={20} className={styles.icon} />
     </button>
   );

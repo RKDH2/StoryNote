@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./styles/Comment.module.css";
 
-export default function Comment(props, { session }) {
+export default function Comment(props) {
   let [comment, setComment] = useState("");
   let [data, setData] = useState([]);
 

@@ -7,7 +7,7 @@ import { IoLogInOutline } from "react-icons/io5";
 export default function LoginBtn() {
   return (
     <button className={styles.logInOutBtn} onClick={() => signIn()}>
-      Login
+      로그인
       <IoLogInOutline size={20} className={styles.icon} />
     </button>
   );

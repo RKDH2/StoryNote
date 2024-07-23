@@ -54,7 +54,7 @@ export default async function Detail(props) {
             ))}
           </p>
         ) : null}
-        <Comment _id={result._id.toString()} session={session} />
+        <Comment _id={result._id.toString()} />
       </div>
     </div>
   );
