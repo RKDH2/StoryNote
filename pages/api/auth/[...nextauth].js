@@ -11,7 +11,6 @@ export const authOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      allowDangerousEmailAccountLinking: true,
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_OAUTH_ID || "",
@@ -29,7 +28,7 @@ export const authOptions = {
 
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30일
+    maxAge: 7 * 24 * 60 * 60, // 7일
   },
 
   callbacks: {
