@@ -28,14 +28,6 @@ export default function Footer({ session }) {
             </Link>
           </>
         ) : null}
-        <Link href="/">
-          <MdOutlineEmojiEvents size={30} />
-          <p>이벤트</p>
-        </Link>
-        <Link href="/">
-          <MdOutlineCircleNotifications size={30} />
-          <p>공지</p>
-        </Link>
       </footer>
     </div>
   );
