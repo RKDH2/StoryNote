@@ -6,7 +6,10 @@
 
 🖼️ 웹 사이트 디자인
 =============
-![스크린샷 2024-07-23 174733](https://github.com/user-attachments/assets/9e0f7df8-2c82-4526-96d3-18b26a1c9b6e)
-![스크린샷 2024-07-23 174744](https://github.com/user-attachments/assets/ea05b860-d1c6-4171-b68f-94dfcf0ac9df)
+<img src="https://github.com/user-attachments/assets/9e0f7df8-2c82-4526-96d3-18b26a1c9b6e" width="600" height="300"/>
+<img src="https://github.com/user-attachments/assets/ea05b860-d1c6-4171-b68f-94dfcf0ac9df" width="600" height="300"/>
 ![스크린샷 2024-07-23 174750](https://github.com/user-attachments/assets/735ade8f-b5c7-4f39-ad4a-f11a6251405a)
 ![스크린샷 2024-07-23 174822](https://github.com/user-attachments/assets/622c1b6f-d929-4955-a81d-d785577f2803)
+![스크린샷 2024-07-23 174845](https://github.com/user-attachments/assets/7b582d19-5026-4b69-8c57-49862135376e)
+![스크린샷 2024-07-23 174856](https://github.com/user-attachments/assets/917f89af-7f9d-4d0a-8efd-b2a10d86b91f)
+![스크린샷 2024-07-23 175010](https://github.com/user-attachments/assets/0234eb32-49a2-4232-8374-323cabb94ee8)
