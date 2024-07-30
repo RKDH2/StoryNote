@@ -41,11 +41,9 @@ export default function PostList() {
                     <div
                       className={styles.post_img}
                       style={{
-                        backgroundImage: `url(${
-                          post.imgSrc.startsWith("https://")
-                            ? post.imgSrc
-                            : `${AWS_S3_SRC}${post.imgSrc}`
-                        })`,
+                        backgroundImage: `url(/api/forum/proxy-image?url=${encodeURIComponent(
+                          post.imgSrc
+                        )})`,
                       }}
                     ></div>
                   )}
