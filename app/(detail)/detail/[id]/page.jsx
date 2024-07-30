@@ -36,15 +36,14 @@ export default async function Detail(props) {
           {result.content}
         </ReactMarkdown>
         {result.imgSrc ? (
-          result.imgSrc.startsWith("https://") ? (
-            <img src={result.imgSrc} className={styles.detailImg} />
-          ) : (
-            <img
-              src={`https://scriptpartyimage.s3.ap-northeast-2.amazonaws.com/${result.imgSrc}`}
-              className={styles.detailImg}
-            />
-          )
+          <img
+            src={`/api/forum/proxy-image?url=${encodeURIComponent(
+              result.imgSrc
+            )}`}
+            className={styles.detailImg}
+          />
         ) : null}
+
         {result.tags && result.tags.length > 0 ? (
           <p className={styles.detailTags}>
             {result.tags.split(",").map((tag, i) => (

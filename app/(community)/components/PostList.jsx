@@ -24,8 +24,6 @@ export default function PostList() {
     fetchPosts();
   }, []);
 
-  const AWS_S3_SRC = process.env.NEXT_PUBLIC_AWS_S3_SRC;
-
   return (
     <>
       <div className={styles.list_container}>

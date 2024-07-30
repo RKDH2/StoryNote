@@ -1,25 +1,59 @@
 import fetch from "node-fetch";
+import { getSession } from "next-auth/react";
+import { URL } from "url";
+
+// 허용된 도메인 목록
+const ALLOWED_DOMAINS = [`${process.env.AWS_IMG_URL}`]; // 실제 도메인만 포함
+
+// 이미지 파일 확장자 필터링
+const ALLOWED_EXTENSIONS = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
 
 export default async function handler(req, res) {
   const { url } = req.query;
+  const session = await getSession({ req });
 
+  // 사용자 인증 검사
+  if (!session) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  // URL 검증
   if (!url) {
     return res.status(400).json({ error: "Missing URL parameter" });
   }
 
   try {
-    // 주어진 URL로 이미지를 요청합니다.
-    const response = await fetch(url);
+    // URL을 파싱하고 검증
+    const parsedUrl = new URL(url);
 
-    // 응답에서 이미지 데이터를 버퍼로 읽어옵니다.
+    // 허용된 도메인만 처리
+    if (!ALLOWED_DOMAINS.includes(parsedUrl.hostname)) {
+      return res.status(403).json({ error: "Forbidden domain" });
+    }
+
+    // 파일 확장자 검증
+    const fileExtension = parsedUrl.pathname.split(".").pop();
+    if (!ALLOWED_EXTENSIONS.includes(`.${fileExtension}`)) {
+      return res.status(400).json({ error: "Unsupported file type" });
+    }
+
+    // 민감한 정보가 포함된 URL 필터링
+    parsedUrl.searchParams.delete("sensitiveParam");
+
+    // URL 요청 및 응답 처리
+    const response = await fetch(parsedUrl.toString());
+    if (!response.ok) {
+      return res
+        .status(response.status)
+        .json({ error: "Failed to fetch image" });
+    }
     const buffer = await response.buffer();
 
-    // 원본 응답의 Content-Type 헤더를 설정하여 브라우저가 적절한 파일 형식으로 인식하도록 합니다.
     res.setHeader("Content-Type", response.headers.get("Content-Type"));
-
-    // 이미지 버퍼 데이터를 클라이언트로 전송합니다.
     res.send(buffer);
   } catch (error) {
+    // 상세한 에러 메시지 로그와 일반적인 사용자 메시지 구분
+    console.error("Error fetching image:", error);
     res.status(500).json({ error: "Failed to fetch image" });
   }
 }

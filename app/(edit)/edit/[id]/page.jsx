@@ -186,10 +186,13 @@ export default function Edit(props) {
           {previewSrc && (
             <>
               <img
-                src={previewSrc}
+                src={`/api/forum/proxy-image?url=${encodeURIComponent(
+                  previewSrc
+                )}`}
                 className={styles.editImagePreview}
                 alt="Preview"
               />
+
               <button
                 className={styles.editImgDeleteBtn}
                 type="button"
