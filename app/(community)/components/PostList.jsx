@@ -49,7 +49,7 @@ export default function PostList() {
               ) : null}
               <div className={styles.title_post_name}>
                 <a href={`/detail/${post._id}`} className={styles.post_name}>
-                  <img
+                  <image
                     src={post.profile_img ? post.profile_img : "/noprofile.svg"}
                     className={styles.profile_img}
                   />

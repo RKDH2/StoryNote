@@ -4,8 +4,6 @@ import Link from "next/link";
 import styles from "./styles/mylist.module.css";
 
 export default function MyList({ result, session }) {
-  const AWS_S3_SRC = process.env.NEXT_PUBLIC_AWS_S3_SRC;
-
   return (
     <div className={styles.myListContainer}>
       {result && result.length > 0 ? (
@@ -30,7 +28,7 @@ export default function MyList({ result, session }) {
             ) : null}
             <div className={styles.my_title_post_name}>
               <a href={`/detail/${post._id}`} className={styles.my_post_name}>
-                <img
+                <image
                   src={post.profile_img ? post.profile_img : "/noprofile.svg"}
                   className={styles.my_profile_img}
                 />

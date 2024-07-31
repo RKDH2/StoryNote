@@ -157,7 +157,7 @@ export default function Write() {
             />
             {previewSrc && (
               <>
-                <img src={previewSrc} className={styles.imagePreview} />
+                <image src={previewSrc} className={styles.imagePreview} />
                 <button
                   className={styles.imgDeleteBtn}
                   type="button"

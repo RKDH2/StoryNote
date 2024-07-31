@@ -185,7 +185,7 @@ export default function Edit(props) {
           />
           {previewSrc && (
             <>
-              <img
+              <image
                 src={`/api/forum/proxy-image?url=${encodeURIComponent(
                   previewSrc
                 )}`}
