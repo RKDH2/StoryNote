@@ -11,7 +11,7 @@ export default async function Navbar() {
     <div className={styles.Navbar}>
       <header className={styles.navbar_container}>
         <Link href="/" className={styles.logo_img}>
-          <image src="/Union.svg" />
+          <img src="/Union.svg" />
         </Link>
         <div className={styles.menu_items}>
           <Link href="/community">
@@ -31,7 +31,7 @@ export default async function Navbar() {
         <div className={styles.login_section}>
           {session ? (
             <>
-              <image
+              <img
                 className={styles.profile}
                 src={session.user.image || "/public/Union.svg"}
                 alt="프로필"

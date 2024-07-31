@@ -22,7 +22,7 @@ export default async function Detail(props) {
     <div className={styles.detailBackgroundContainer}>
       <div className={styles.detailContainer}>
         <div className={styles.profileContainer}>
-          <image
+          <img
             src={result.profile_img ? result.profile_img : "/noprofile.svg"}
             className={styles.profileImg}
           />
@@ -36,7 +36,7 @@ export default async function Detail(props) {
           {result.content}
         </ReactMarkdown>
         {result.imgSrc ? (
-          <image
+          <img
             src={`/api/forum/proxy-image?url=${encodeURIComponent(
               result.imgSrc
             )}`}

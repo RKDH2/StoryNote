@@ -28,7 +28,7 @@ export default function MyList({ result, session }) {
             ) : null}
             <div className={styles.my_title_post_name}>
               <a href={`/detail/${post._id}`} className={styles.my_post_name}>
-                <image
+                <img
                   src={post.profile_img ? post.profile_img : "/noprofile.svg"}
                   className={styles.my_profile_img}
                 />
