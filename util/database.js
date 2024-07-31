@@ -7,12 +7,18 @@ if (!url) {
 
 let connectDB;
 
+const client = new MongoClient(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 if (process.env.NODE_ENV === "development") {
   if (!global._mongo) {
-    global._mongo = new MongoClient(url).connect();
+    global._mongo = client.connect();
   }
   connectDB = global._mongo;
 } else {
-  connectDB = new MongoClient(url).connect();
+  connectDB = client.connect();
 }
+
 export { connectDB };
