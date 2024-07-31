@@ -49,7 +49,9 @@ export default async function handler(req, res) {
     }
     const buffer = await response.buffer();
 
-    res.setHeader("Content-Type", response.headers.get("Content-Type"));
+    const contentType =
+      response.headers.get("Content-Type") || "application/octet-stream";
+    res.setHeader("Content-Type", contentType);
     res.send(buffer);
   } catch (error) {
     // 상세한 에러 메시지 로그와 일반적인 사용자 메시지 구분
