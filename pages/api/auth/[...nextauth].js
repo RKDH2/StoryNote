@@ -32,17 +32,6 @@ export const authOptions = {
   },
 
   callbacks: {
-    jwt: async ({ token, user }) => {
-      if (user) {
-        // 일반 로그인 (이메일/비밀번호) 시
-        token.user = {
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        };
-      }
-      return token;
-    },
     session: async ({ session, token }) => {
       session.user = token.user;
       return session;

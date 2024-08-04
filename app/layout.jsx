@@ -18,7 +18,12 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  let session = await getServerSession(authOptions);
+  let session;
+  try {
+    session = await getServerSession(authOptions);
+  } catch (error) {
+    console.error("Failed to get session:", error);
+  }
 
   return (
     <html lang="en">
