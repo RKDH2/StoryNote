@@ -60,9 +60,7 @@ export default async function handler(req, res) {
         try {
           const db = (await connectDB).db("forum");
           await db.collection("community_post").insertOne(body);
-          return res
-            .status(200)
-            .json({ success: true, redirectUrl: "/community" });
+          return res.status(200).redirect("/community");
         } catch {
           console.error("DB 오류:", dbError.message);
           res.status(500).json({ error: "DB오류" });

@@ -41,9 +41,9 @@ export default function Write() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
     if (file) {
+      e.preventDefault();
+
       const uniqueFileName = `${uuidv4()}_${file.name}`;
       let filename = encodeURIComponent(uniqueFileName);
       try {
@@ -94,11 +94,6 @@ export default function Write() {
           throw new Error(
             `Failed to post image: ${postImage.statusText}, ${errorText}`
           );
-        }
-
-        let result = await postImage.json();
-        if (result.success) {
-          router.push(result.redirectUrl); // 성공 시 페이지 이동
         }
       } catch (error) {
         console.error("파일 업로드 중 오류 발생:", error);
