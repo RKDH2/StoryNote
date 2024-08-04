@@ -4,8 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loading from "./loading";
 import { Suspense } from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import Providers from "./components/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,21 +17,16 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  let session;
-  try {
-    session = await getServerSession(authOptions);
-  } catch (error) {
-    console.error("Failed to get session:", error);
-  }
-
   return (
     <html lang="en">
       <body className={`${inter.className} layout`}>
-        <Navbar />
-        <Suspense fallback={<Loading />}>
-          <main>{children}</main>
-        </Suspense>
-        <Footer session={session} />
+        <Providers>
+          <Navbar />
+          <Suspense fallback={<Loading />}>
+            <main>{children}</main>
+          </Suspense>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
