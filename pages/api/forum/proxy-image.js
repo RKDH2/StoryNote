@@ -1,5 +1,4 @@
 import fetch from "node-fetch";
-import { getSession } from "next-auth/react";
 import { URL } from "url";
 
 // 허용된 도메인 목록
