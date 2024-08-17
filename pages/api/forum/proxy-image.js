@@ -10,12 +10,6 @@ const ALLOWED_EXTENSIONS = [".png", ".jpg", ".jpeg", ".gif", ".webp"];
 
 export default async function handler(req, res) {
   const { url } = req.query;
-  const session = await getSession({ req });
-
-  // 사용자 인증 검사
-  if (!session) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
 
   // URL 검증
   if (!url) {
