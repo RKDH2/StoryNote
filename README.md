@@ -41,6 +41,8 @@
 <code>MongoBD</code>, <code>Nextjs API Routs</code>, <code>Next Auth</code>, <code>UUID</code>, <code>bcrypt</code>
 #### 클라우드 스토리지
 <code>Amazon S3</code>, <code>AWS-SDK</code>
+#### 아키텍처
+<code>REST API</code>
 
 🖼️ 웹 사이트 디자인
 =============
